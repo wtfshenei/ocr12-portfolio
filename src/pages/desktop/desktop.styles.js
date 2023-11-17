@@ -5,7 +5,8 @@ export const DesktopContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 100%;
+  height: calc(100vh - 45px);
+  overflow: hidden;
 `
 
 export const TaskbarDisplay = styled(Taskbar)`

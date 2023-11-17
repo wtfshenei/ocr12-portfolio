@@ -2,6 +2,8 @@ import styled from "styled-components";
 import LogoWindows from "../../components/logoWindows/logoWindows";
 
 export const TaskbarStyled = styled.div`
+  position: fixed;
+  bottom: 0;
   display: flex;
   align-items: center;
   flex-direction: row;
@@ -29,4 +31,10 @@ export const LogoWindowsSmall = styled(LogoWindows)`
   height: 30px;
   cursor: pointer;
   fill: #FFF;
+`
+
+export const AppIcon = styled.img`
+  width: 50px;
+  height: 30px;
+  margin-left: 15px;
 `
