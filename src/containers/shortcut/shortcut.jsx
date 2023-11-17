@@ -1,12 +1,11 @@
 import React from 'react';
 import {ShortcutWrapper} from "./shortcut.styles";
-import LogoWindows from "../../components/logoWindows/logoWindows";
 
-const Shortcut = ( {onClick} ) => {
+const Shortcut = ( {rel, name, icon, onClick} ) => {
     return (
-        <ShortcutWrapper onClick={onClick}>
-            <LogoWindows />
-            <h3>TEST</h3>
+        <ShortcutWrapper rel={rel} onClick={onClick}>
+            <img src={icon} alt={name} />
+            <h3>{name}</h3>
         </ShortcutWrapper>
     );
 };

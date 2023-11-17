@@ -11,9 +11,9 @@ export const ShortcutWrapper = styled.div`
   padding: 10px;
   transition: background 0.3s, box-shadow 0.3s;
   
-  svg {
+  img {
     height: 50px;
-    width: 50px;
+    width: auto;
     fill: #FFF;
   }
   
