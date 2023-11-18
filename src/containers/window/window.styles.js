@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Button from "../../components/button/button";
 
 export const WindowContainer = styled.div`
   position: fixed;
@@ -18,7 +19,7 @@ export const WindowTitlebar = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 10px;
+  padding: 0 5px 0 10px;
   
   &.handle {
     cursor: move;
@@ -65,4 +66,24 @@ export const HandleResizable = styled.span`
   bottom: 0;
   right: 0;
   cursor: se-resize;
+`
+
+export const ButtonWindow = styled(Button)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: none;
+  width: 25px;
+  height: 30px;
+  margin-right: 5px;
+  
+  svg {
+    padding: 0;
+    margin: 0;
+  }
+  
+  &:nth-child(3) {
+    margin-right: 0;
+  }
 `

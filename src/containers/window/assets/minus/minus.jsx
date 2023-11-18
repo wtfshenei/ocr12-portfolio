@@ -1,10 +1,9 @@
 import React from 'react';
 
-const Minus = ({ onClick }) => {
+const Minus = () => {
     return (
         <div>
             <svg
-                onClick={onClick}
                 xmlns="http://www.w3.org/2000/svg"
                 height="1em"
                 viewBox="0 0 448 512">

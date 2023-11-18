@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {HandleResizable, TitlebarLeft, TitlebarLeftIcon, TitlebarRight, WindowContainer, WindowContent, WindowTitlebar} from "./window.styles";
+import {ButtonWindow, HandleResizable, TitlebarLeft, TitlebarLeftIcon, TitlebarRight, WindowContainer, WindowContent, WindowTitlebar} from "./window.styles";
 import Cross from "./assets/cross/cross";
 import Minus from "./assets/minus/minus";
 import Square from "./assets/square/square";
@@ -75,9 +75,20 @@ const Window = ({ props, onClick, isFront, rel, name, content, icon, initialPosi
                                 {name}
                             </TitlebarLeft>
                             <TitlebarRight>
-                                <Minus onClick={handleMinimize}/>
-                                {isFullScreen ? <Restore onClick={toggleFullScreen}/> : <Square onClick={toggleFullScreen}/>}
-                                <Cross onClick={onClick}/>
+                                <ButtonWindow onClick={handleMinimize}>
+                                    <Minus />
+                                </ButtonWindow>
+                                {isFullScreen ?
+                                    <ButtonWindow onClick={toggleFullScreen}>
+                                        <Restore />
+                                    </ButtonWindow>
+                                    :
+                                    <ButtonWindow onClick={toggleFullScreen}>
+                                        <Square />
+                                    </ButtonWindow>}
+                                <ButtonWindow onClick={() => onClick(rel)}>
+                                    <Cross />
+                                </ButtonWindow>
                             </TitlebarRight>
                         </WindowTitlebar>
                         <WindowContent>
