@@ -19,50 +19,50 @@ const ThunderbirdIcon = () => {
                 <g mask="url(#i)">
                     <path fill="url(#j)" d="m 162.705,200.979 h 435.07 v 394.47 h -435.07 z" opacity="0.7"/>
                     <g filter="url(#k)">
-                        <path fill="#458fcd" fill-rule="evenodd" d="m 334.745,422.298 c -25.35,-26.38 -101.27,-114.03 -101.27,-114.03 l 5.87,0.26 118.86,88.77 c 8.9,6.47 21.6,6.4 30.42,-0.15 l 116.55,-88.5 6.18,-0.49 c 0,0 -73.44,85.57 -101.57,113.76 -28.13,28.19 -49.69,26.76 -75.04,0.38 z" clip-rule="evenodd"/>
+                        <path fill="#458fcd" fillRule="evenodd" d="m 334.745,422.298 c -25.35,-26.38 -101.27,-114.03 -101.27,-114.03 l 5.87,0.26 118.86,88.77 c 8.9,6.47 21.6,6.4 30.42,-0.15 l 116.55,-88.5 6.18,-0.49 c 0,0 -73.44,85.57 -101.57,113.76 -28.13,28.19 -49.69,26.76 -75.04,0.38 z" clipRule="evenodd"/>
                     </g>
                 </g>
                 <path fill="#fff" d="m 398.855,152.258 c 18.42,-5.8 16.8,-24.03 16.8,-24.03 0,0 -9.21,-10.85 -27.46,-4.84 -17.08,5.63 -19.73,17.8 -19.73,17.8 0,0 9.33,17.7 30.39,11.07 z"/>
                 <defs>
                     <linearGradient id="a" x1="146.185" x2="639.58502" y1="155.649" y2="615.86902" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#1B91F3"/>
-                        <stop offset="1" stop-color="#0B68CB"/>
+                        <stop stopColor="#1B91F3"/>
+                        <stop offset="1" stopColor="#0B68CB"/>
                     </linearGradient>
                     <linearGradient id="d" x1="283.47501" x2="461.01501" y1="273.45801" y2="75.818298" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#0F5DB0"/>
-                        <stop offset="1" stop-color="#0F5DB0" stop-opacity="0"/>
+                        <stop stopColor="#0F5DB0"/>
+                        <stop offset="1" stopColor="#0F5DB0" stopOpacity="0"/>
                     </linearGradient>
                     <linearGradient id="f" x1="594.625" x2="512.07501" y1="416.55899" y2="619.24902" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#E247C4" stop-opacity="0"/>
-                        <stop offset="1" stop-color="#E247C4" stop-opacity="0.64"/>
+                        <stop stopColor="#E247C4" stopOpacity="0"/>
+                        <stop offset="1" stopColor="#E247C4" stopOpacity="0.64"/>
                     </linearGradient>
                     <linearGradient id="g" x1="82.7155" x2="155.44501" y1="234.78999" y2="527.51001" gradientUnits="userSpaceOnUse">
-                        <stop offset="0.1" stop-color="#EF3ACC"/>
-                        <stop offset="1" stop-color="#EF3ACC" stop-opacity="0"/>
+                        <stop offset="0.1" stopColor="#EF3ACC"/>
+                        <stop offset="1" stopColor="#EF3ACC" stopOpacity="0"/>
                     </linearGradient>
                     <linearGradient id="h" x1="374.70499" x2="374.70499" y1="273.95001" y2="569.94897" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#fff"/>
-                        <stop offset="0.91" stop-color="#BEE1FE"/>
-                        <stop offset="1" stop-color="#96CEFD"/>
+                        <stop stopColor="#fff"/>
+                        <stop offset="0.91" stopColor="#BEE1FE"/>
+                        <stop offset="1" stopColor="#96CEFD"/>
                     </linearGradient>
                     <linearGradient id="j" x1="380.245" x2="380.245" y1="441.44901" y2="565.44897" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#BCE0FD"/>
-                        <stop offset="1" stop-color="#88CCFC"/>
+                        <stop stopColor="#BCE0FD"/>
+                        <stop offset="1" stopColor="#88CCFC"/>
                     </linearGradient>
                     <radialGradient id="b" cx="0" cy="0" r="1" gradientTransform="matrix(117.92992,271.44954,-260.03887,112.97261,145.274,314)" gradientUnits="userSpaceOnUse">
-                        <stop offset="0.53" stop-color="#0B4186" stop-opacity="0"/>
-                        <stop offset="1" stop-color="#0B4186" stop-opacity="0.45"/>
+                        <stop offset="0.53" stopColor="#0B4186" stopOpacity="0"/>
+                        <stop offset="1" stopColor="#0B4186" stopOpacity="0.45"/>
                     </radialGradient>
                     <radialGradient id="c" cx="0" cy="0" r="1" gradientTransform="matrix(-38.950414,-49.859637,82.506525,-64.454205,383.705,192.449)" gradientUnits="userSpaceOnUse">
-                        <stop stop-color="#EF3ACC" stop-opacity="0"/>
-                        <stop offset="1" stop-color="#EF3ACC" stop-opacity="0.64"/>
+                        <stop stopColor="#EF3ACC" stopOpacity="0"/>
+                        <stop offset="1" stopColor="#EF3ACC" stopOpacity="0.64"/>
                     </radialGradient>
                     <radialGradient id="e" cx="0" cy="0" r="1" gradientTransform="matrix(200.50032,-415.91019,513.77136,247.67684,242.704,551.15)" gradientUnits="userSpaceOnUse">
-                        <stop offset="0.02" stop-color="#094188"/>
-                        <stop offset="0.97" stop-color="#0B4186" stop-opacity="0"/>
+                        <stop offset="0.02" stopColor="#094188"/>
+                        <stop offset="0.97" stopColor="#0B4186" stopOpacity="0"/>
                     </radialGradient>
-                    <filter id="k" width="341.88" height="198.416" x="201.47501" y="276.15799" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <filter id="k" width="341.88" height="198.416" x="201.47501" y="276.15799" colorInterpolationFilters="sRGB" filterUnits="userSpaceOnUse">
+                        <feFlood floodOpacity="0" result="BackgroundImageFix"/>
                         <feBlend in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
                         <feGaussianBlur result="effect1_foregroundBlur_106_1002" stdDeviation="16"/>
                     </filter>

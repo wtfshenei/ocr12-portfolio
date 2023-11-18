@@ -4,11 +4,11 @@ export const WindowContainer = styled.div`
   position: fixed;
   width: ${({ $isFullScreen }) => $isFullScreen ? '100%' : '70vw'};
   height: ${({ $isFullScreen }) => $isFullScreen ? 'calc(100% - 45px)' : '70vh'};
-  z-index: 1000;
-  border: 2px solid black;
   background-color: white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
+  border: ${({ $isFront }) => $isFront ? '2px solid blue' : '2px solid black'};
+  z-index: ${({ $isFront }) => $isFront ? 2000 : 1000};
 `;
 
 export const WindowTitlebar = styled.div`
@@ -30,6 +30,12 @@ export const TitlebarLeft = styled.div`
   justify-content: flex-start;
   width: 50%;
   font-weight: bold;
+`
+
+export const TitlebarLeftIcon = styled.div`
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
 `
 
 export const TitlebarRight = styled.div`

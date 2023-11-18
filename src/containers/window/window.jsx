@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {HandleResizable, TitlebarLeft, TitlebarRight, WindowContainer, WindowContent, WindowTitlebar} from "./window.styles";
+import {HandleResizable, TitlebarLeft, TitlebarLeftIcon, TitlebarRight, WindowContainer, WindowContent, WindowTitlebar} from "./window.styles";
 import Cross from "./assets/cross/cross";
 import Minus from "./assets/minus/minus";
 import Square from "./assets/square/square";
@@ -7,7 +7,7 @@ import Draggable from "react-draggable";
 import Restore from "./assets/restore/restore";
 import { Resizable } from 'react-resizable'
 
-const Window = ({ props, onClick, rel, name, initialPosition}) => {
+const Window = ({ props, onClick, isFront, rel, name, content, icon, initialPosition, bringToFront, minimize, isMinimized, onMinimize}) => {
     const [isFullScreen, setIsFullScreen] = useState(false)
     const [position, setPosition] = useState({ x: 0, y: 0 })
     const [lastPosition, setLastPosition] = useState(null)
@@ -42,34 +42,51 @@ const Window = ({ props, onClick, rel, name, initialPosition}) => {
         }
     }
 
+    const handleWindowClick = () => {
+        bringToFront()
+    }
+
+    const handleMinimize = () => {
+        onMinimize(rel, position)
+        minimize()
+    }
+
     return (
-        <Draggable
-            handle={".handle"}
-            bounds={"parent"}
-            position={isFullScreen ? { x: 0, y: 0 } : position}
-            onStop={handleDragStop}
-            disabled={isFullScreen}
-        >
-            <Resizable
-                width={size.width}
-                height={size.height}
-                handle={<HandleResizable />}
-                onResize={(event, { size }) => setSize(size)}
+        !isMinimized && (
+            <Draggable
+                handle={".handle"}
+                bounds={"parent"}
+                position={isFullScreen ? {x: 0, y: 0} : position}
+                onStop={handleDragStop}
+                disabled={isFullScreen}
             >
-                <WindowContainer {...props} rel={rel} $isFullScreen={isFullScreen}>
-                    <WindowTitlebar className={"handle"}>
-                        <TitlebarLeft>{name}</TitlebarLeft>
-                        <TitlebarRight>
-                            <Minus />
-                            {isFullScreen ? <Restore onClick={toggleFullScreen} /> : <Square onClick={toggleFullScreen}/>}
-                            <Cross onClick={onClick} />
-                        </TitlebarRight>
-                    </WindowTitlebar>
-                    <WindowContent>
-                    </WindowContent>
-                </WindowContainer>
-            </Resizable>
-        </Draggable>
+                <Resizable
+                    width={size.width}
+                    height={size.height}
+                    handle={<HandleResizable/>}
+                    onResize={(event, {size}) => setSize(size)}
+                >
+                    <WindowContainer {...props} rel={rel} $isFullScreen={isFullScreen} $isFront={isFront} onClick={handleWindowClick}>
+                        <WindowTitlebar className={"handle"}>
+                            <TitlebarLeft>
+                                <TitlebarLeftIcon>
+                                    {icon}
+                                </TitlebarLeftIcon>
+                                {name}
+                            </TitlebarLeft>
+                            <TitlebarRight>
+                                <Minus onClick={handleMinimize}/>
+                                {isFullScreen ? <Restore onClick={toggleFullScreen}/> : <Square onClick={toggleFullScreen}/>}
+                                <Cross onClick={onClick}/>
+                            </TitlebarRight>
+                        </WindowTitlebar>
+                        <WindowContent>
+                            {content}
+                        </WindowContent>
+                    </WindowContainer>
+                </Resizable>
+            </Draggable>
+        )
     );
 };
 

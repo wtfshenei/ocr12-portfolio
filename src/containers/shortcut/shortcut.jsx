@@ -4,7 +4,7 @@ import {ShortcutWrapper} from "./shortcut.styles";
 const Shortcut = ( {rel, name, icon, onClick} ) => {
     return (
         <ShortcutWrapper rel={rel} onClick={onClick}>
-            <img src={icon} alt={name} />
+            {icon}
             <h3>{name}</h3>
         </ShortcutWrapper>
     );

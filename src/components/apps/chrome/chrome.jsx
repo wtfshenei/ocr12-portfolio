@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Explorer = () => {
+const Chrome = () => {
     return (
         <div>
             <h2>CONTENT</h2>
@@ -8,4 +8,4 @@ const Explorer = () => {
     );
 };
 
-export default Explorer;
+export default Chrome;
