@@ -2,12 +2,12 @@ import React, {useState} from 'react';
 import {DesktopContainer, ShortcutsWrapper, TaskbarDisplay} from "./desktop.styles";
 import Shortcut from "../../containers/shortcut/shortcut";
 import Window from "../../containers/window/window";
-import ThunderbirdIcon from "../../components/apps/thunderbird/thunderbirdIcon";
-import AcrobatreaderIcon from "../../components/apps/acrobatreader/acrobatreaderIcon";
-import ChromeIcon from "../../components/apps/chrome/chromeIcon";
-import Thunderbird from "../../components/apps/thunderbird/thunderbird";
-import Acrobatreader from "../../components/apps/acrobatreader/acrobatreader";
-import Chrome from "../../components/apps/chrome/chrome";
+import ThunderbirdIcon from "../../containers/apps/thunderbird/thunderbirdIcon";
+import AcrobatreaderIcon from "../../containers/apps/acrobatreader/acrobatreaderIcon";
+import ChromeIcon from "../../containers/apps/chrome/chromeIcon";
+import Thunderbird from "../../containers/apps/thunderbird/thunderbird";
+import Acrobatreader from "../../containers/apps/acrobatreader/acrobatreader";
+import Chrome from "../../containers/apps/chrome/chrome";
 
 const Desktop = () => {
     const data = [
