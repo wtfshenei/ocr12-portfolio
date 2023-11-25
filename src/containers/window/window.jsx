@@ -1,103 +1,94 @@
 import React, {useEffect, useState} from 'react';
-import {ButtonWindow, HandleResizable, TitlebarLeft, TitlebarLeftIcon, TitlebarRight, WindowContainer, WindowContent, WindowTitlebar} from "./window.styles";
+import {ButtonWindow, TitlebarLeft, TitlebarLeftIcon, TitlebarRight, WindowContainer, WindowContent, WindowTitlebar} from "./window.styles";
 import Cross from "./assets/cross/cross";
 import Minus from "./assets/minus/minus";
 import Square from "./assets/square/square";
 import Draggable from "react-draggable";
 import Restore from "./assets/restore/restore";
-import { Resizable } from 'react-resizable'
+import {useDispatch, useSelector} from "react-redux";
+import {closeWindow, frontWindow, maximizeWindow, minimizeWindow, positionWindow, restoreWindow} from "../../redux/windows/windowsSlice";
 
-const Window = ({ props, onClick, isFront, rel, name, content, icon, initialPosition, bringToFront, minimize, isMinimized, onMinimize}) => {
+const Window = ({ props, rel, name, content, icon, isFront, initialPosition}) => {
+    const dispatch = useDispatch()
+    const posWin = useSelector((state) => state.windows.window.find(win => win.id === rel))
+    const [position, setPosition] = useState(posWin ? posWin.position : initialPosition || { x: 0, y: 0 })
     const [isFullScreen, setIsFullScreen] = useState(false)
-    const [position, setPosition] = useState({ x: 0, y: 0 })
-    const [lastPosition, setLastPosition] = useState(null)
-    const [size, setSize] = useState({ width: 0, height: 0 })
 
     useEffect(() => {
-        const width = window.innerWidth * 0.7
-        const height = window.innerHeight * 0.7
-        setSize({ width, height  })
-
-        if (initialPosition) {
-            setPosition(initialPosition)
-        } else {
-            const x = (window.innerWidth - width) / 2;
-            const y = (window.innerHeight - height) / 2;
-            setPosition({x, y});
+        if (initialPosition && !posWin) {
+            setPosition(initialPosition);
+        } else if (posWin && posWin.position) {
+            setPosition(posWin.position)
         }
-    }, [initialPosition]);
+    }, [initialPosition, posWin]);
 
     const toggleFullScreen = () => {
-        if (!isFullScreen) {
-            setLastPosition(position)
-        } else {
-            setPosition(lastPosition)
-        }
         setIsFullScreen(!isFullScreen)
+        if (isFullScreen) {
+            dispatch(restoreWindow(rel))
+        } else {
+            dispatch(maximizeWindow(rel))
+        }
     }
 
     const handleDragStop = (e, data) => {
         if (!isFullScreen) {
-            setPosition({ x: data.x, y: data.y })
+            const newPosition = { x: data.x, y: data.y };
+            setPosition(newPosition);
+            dispatch(positionWindow({ id: rel, position: newPosition}));
         }
     }
 
-    const handleWindowClick = () => {
-        bringToFront()
+    const handleMinimize = () => {
+        dispatch(minimizeWindow(rel, isFullScreen))
     }
 
-    const handleMinimize = () => {
-        onMinimize(rel, position)
-        minimize()
+    const handleClose = () => {
+        dispatch(closeWindow(rel))
+    }
+
+    const handleWindowClick = () => {
+        dispatch(frontWindow(rel))
     }
 
     return (
-        !isMinimized && (
-            <Draggable
-                handle={".handle"}
-                bounds={"parent"}
-                position={isFullScreen ? {x: 0, y: 0} : position}
-                onStop={handleDragStop}
-                disabled={isFullScreen}
-            >
-                <Resizable
-                    width={size.width}
-                    height={size.height}
-                    handle={<HandleResizable/>}
-                    onResize={(event, {size}) => setSize(size)}
-                >
-                    <WindowContainer {...props} rel={rel} $isFullScreen={isFullScreen} $isFront={isFront} onClick={handleWindowClick}>
-                        <WindowTitlebar className={"handle"}>
-                            <TitlebarLeft>
-                                <TitlebarLeftIcon>
-                                    {icon}
-                                </TitlebarLeftIcon>
-                                {name}
-                            </TitlebarLeft>
-                            <TitlebarRight>
-                                <ButtonWindow onClick={handleMinimize}>
-                                    <Minus />
-                                </ButtonWindow>
-                                {isFullScreen ?
-                                    <ButtonWindow onClick={toggleFullScreen}>
-                                        <Restore />
-                                    </ButtonWindow>
-                                    :
-                                    <ButtonWindow onClick={toggleFullScreen}>
-                                        <Square />
-                                    </ButtonWindow>}
-                                <ButtonWindow onClick={() => onClick(rel)}>
-                                    <Cross />
-                                </ButtonWindow>
-                            </TitlebarRight>
-                        </WindowTitlebar>
-                        <WindowContent>
-                            {content}
-                        </WindowContent>
-                    </WindowContainer>
-                </Resizable>
-            </Draggable>
-        )
+        <Draggable
+            handle={".handle"}
+            bounds={"parent"}
+            position={isFullScreen ? {x: 0, y: 0} : position}
+            onStop={handleDragStop}
+            disabled={isFullScreen}
+        >
+            <WindowContainer {...props} rel={rel} $isFullScreen={isFullScreen} $isFront={isFront} onClick={handleWindowClick}>
+                <WindowTitlebar className={"handle"}>
+                    <TitlebarLeft>
+                        <TitlebarLeftIcon>
+                            {icon}
+                        </TitlebarLeftIcon>
+                        {name}
+                    </TitlebarLeft>
+                    <TitlebarRight>
+                        <ButtonWindow onClick={handleMinimize}>
+                            <Minus />
+                        </ButtonWindow>
+                        {isFullScreen ?
+                            <ButtonWindow onClick={toggleFullScreen}>
+                                <Restore />
+                            </ButtonWindow>
+                            :
+                            <ButtonWindow onClick={toggleFullScreen}>
+                                <Square />
+                            </ButtonWindow>}
+                        <ButtonWindow onClick={handleClose}>
+                            <Cross />
+                        </ButtonWindow>
+                    </TitlebarRight>
+                </WindowTitlebar>
+                <WindowContent>
+                    {content}
+                </WindowContent>
+            </WindowContainer>
+        </Draggable>
     );
 };
 

@@ -37,7 +37,7 @@ export const minimizeWindow = (appId) => ({
 
 export const positionWindow = (appId, position) => ({
     type: 'POSITION_WINDOW',
-    payload: { appId, position }
+    payload: { id: appId, position }
 })
 
 export const frontWindow = (appId) => ({

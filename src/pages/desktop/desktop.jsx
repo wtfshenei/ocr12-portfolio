@@ -1,83 +1,60 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {DesktopContainer, ShortcutsWrapper, TaskbarDisplay} from "./desktop.styles";
 import Shortcut from "../../containers/shortcut/shortcut";
 import Window from "../../containers/window/window";
-import ThunderbirdIcon from "../../containers/apps/thunderbird/thunderbirdIcon";
-import AcrobatreaderIcon from "../../containers/apps/acrobatreader/acrobatreaderIcon";
-import ChromeIcon from "../../containers/apps/chrome/chromeIcon";
-import Thunderbird from "../../containers/apps/thunderbird/thunderbird";
-import Acrobatreader from "../../containers/apps/acrobatreader/acrobatreader";
-import Chrome from "../../containers/apps/chrome/chrome";
+import {useDispatch, useSelector} from "react-redux";
+import {frontWindow, openWindow} from "../../redux/windows/windowsSlice";
+import {getIconComponent} from "../../utils/iconSelector";
 
 const Desktop = () => {
     const data = [
         {
             id: 'app1',
             name: 'Contacts',
-            icon: <ThunderbirdIcon />,
-            content: <Thunderbird />
+            iconType: 'thunderbird',
+            // content: <Thunderbird />
         },
         {
             id: 'app2',
             name: 'C.V.',
-            icon: <AcrobatreaderIcon />,
-            content: <Acrobatreader />
+            iconType: 'acrobatreader',
+            // content: <Acrobatreader />
         },
         {
             id: 'app3',
             name: 'Projets',
-            icon: <ChromeIcon />,
-            content: <Chrome />
+            iconType: 'chrome',
+            // content: <Chrome />
         }
     ]
 
-    const [openApps, setOpenApps] = useState([])
-    const [frontApp, setFrontApp] = useState(null)
+    const dispatch = useDispatch()
+    const openApps = useSelector((state) => state.windows.window)
+    const frontApp = useSelector((state) => state.windows.frontWindow)
 
-    const openWindow = (app) => {
-        const isAppAlreadyOpen = openApps.some(openApp => openApp.id === app.id)
-
+    const handleOpenWindow = (app) => {
+        const isAppAlreadyOpen = openApps.some(openApp => openApp.id === app.id);
         if (!isAppAlreadyOpen) {
-            const offset = 30
-            const x = 100 + openApps.length * offset
-            const y = 100 + openApps.length * offset
+            const offset = 30;
+            const defaultWindowSize = { width: window.innerWidth * 0.7, height: window.innerHeight * 0.7 };
+            const numberOfOpenApps = openApps.length;
 
-            const newApp = {...app, position: {x, y}, isMinimized: false}
-            setOpenApps(prevOpenApps => [...prevOpenApps, newApp])
+            let x = (window.innerWidth - defaultWindowSize.width) / 2 + numberOfOpenApps * offset;
+            let y = (window.innerHeight - defaultWindowSize.height) / 2 + numberOfOpenApps * offset;
 
-            bringToFront(app.id)
+            const newApp = {
+                ...app,
+                iconType: app.iconType,
+                position: { x, y },
+                isMinimized: false
+            };
+            dispatch(openWindow(newApp));
+            dispatch(frontWindow(app.id))
         }
     }
 
-    const bringToFront = (appId) => {
-        setFrontApp(appId)
-    }
-
-    const minimizeWindow = (appId) => {
-        setOpenApps(prevOpenApps =>
-            prevOpenApps.map(app =>
-                app.id === appId ? {...app, isMinimized: true} : app
-            )
-        );
-    }
-
-    const handleMinimize = (appId, position) => {
-        const updatedApps = openApps.map(app =>
-            app.id === appId ? { ...app, isMinimized: true, minimizedPosition: position } : app
-        );
-        setOpenApps(updatedApps);
-    };
-
-    const restoreWindow = (appId) => {
-        const updatedApps = openApps.map(app =>
-            app.id === appId ? { ...app, isMinimized: false, position: app.minimizedPosition } : app
-        );
-        setOpenApps(updatedApps);
-        setFrontApp(appId);
-    }
-
-    const closeWindow = (appId) => {
-        setOpenApps(prevOpenApps => prevOpenApps.filter(app => app.id !== appId))
+    const handleBringToFront = (rel) => {
+        dispatch(frontWindow(rel))
     }
 
     return (
@@ -88,8 +65,8 @@ const Desktop = () => {
                         key={`shortcut-${app.id}`}
                         rel={app.id}
                         name={app.name}
-                        icon={app.icon}
-                        onClick={() => openWindow(app)}
+                        icon={getIconComponent(app.iconType)}
+                        onClick={() => handleOpenWindow(app)}
                     />
                 ))}
             </ShortcutsWrapper>
@@ -99,19 +76,15 @@ const Desktop = () => {
                         key={`window-${app.id}`}
                         rel={app.id}
                         name={app.name}
+                        icon={getIconComponent(app.iconType)}
                         content={app.content}
-                        icon={app.icon}
                         initialPosition={app.position}
                         isFront={app.id === frontApp}
-                        isMinimized={app.isMinimized}
-                        bringToFront={() => bringToFront(app.id)}
-                        onMinimize={(id, pos) => handleMinimize(id, pos)}
-                        minimize={() => minimizeWindow(app.id)}
-                        onClick={() => closeWindow(app.id)}
+                        bringToFront={() => handleBringToFront(app.id)}
                     />
                 )
             ))}
-            <TaskbarDisplay openApps={openApps} frontApp={frontApp} bringToFront={bringToFront} restoreWindow={restoreWindow} />
+            <TaskbarDisplay openApps={openApps} frontApp={frontApp} />
         </DesktopContainer>
     );
 };

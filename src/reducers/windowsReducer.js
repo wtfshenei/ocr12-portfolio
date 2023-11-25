@@ -28,12 +28,12 @@ export function windowsReducer(state = initialState, action) {
         case 'RESTORE_WINDOW':
             return {
                 ...state,
-                window: state.window.map(win => win.id === action.payload ? {...win, isMaximized: false, isMinimized: false, position: win.lastPosition} : win)
+                window: state.window.map(win => win.id === action.payload ? {...win, isMaximized: false, isMinimized: false, position: win.position} : win)
             }
         case 'MINIMIZE_WINDOW':
             return {
                 ...state,
-                window: state.window.map(win => win.id === action.payload ? {...win, isMinimized: true} : win)
+                window: state.window.map(win => win.id === action.payload ? {...win, isMinimized: true, wasFullScreen: win.isMaximized} : win)
             }
         case 'POSITION_WINDOW':
             return {
