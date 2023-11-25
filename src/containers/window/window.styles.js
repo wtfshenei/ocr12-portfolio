@@ -59,14 +59,14 @@ export const WindowContent = styled.div`
   overflow: auto;
 `;
 
-export const HandleResizable = styled.span`
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  bottom: 0;
-  right: 0;
-  cursor: se-resize;
-`
+// export const HandleResizable = styled.span`
+//   position: absolute;
+//   width: 10px;
+//   height: 10px;
+//   bottom: 0;
+//   right: 0;
+//   cursor: se-resize;
+// `
 
 export const ButtonWindow = styled(Button)`
   display: flex;
