@@ -25,9 +25,18 @@ export const windowsSlice = createSlice({
             );
         },
         restoreWindow: (state, action) => {
-            state.window = state.window.map(win =>
-                win.id === action.payload ? {...win, isMaximized: false, isMinimized: false, position: win.position} : win
-            );
+            state.window = state.window.map(win => {
+                if (win.id === action.payload) {
+                    const isMaximized = win.wasFullScreen;
+                    return {
+                        ...win,
+                        isMaximized,
+                        isMinimized: false,
+                        position: isMaximized ? win.lastPosition : win.position
+                    };
+                }
+                return win;
+            });
         },
         minimizeWindow: (state, action) => {
             state.window = state.window.map(win =>
