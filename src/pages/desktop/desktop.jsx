@@ -5,6 +5,7 @@ import Window from "../../containers/window/window";
 import {useDispatch, useSelector} from "react-redux";
 import {frontWindow, openWindow} from "../../redux/windows/windowsSlice";
 import {getIconComponent} from "../../utils/iconSelector";
+import {getContentComponent} from "../../utils/contentSelector";
 
 const Desktop = () => {
     const data = [
@@ -12,19 +13,19 @@ const Desktop = () => {
             id: 'app1',
             name: 'Contacts',
             iconType: 'thunderbird',
-            // content: <Thunderbird />
+            contentType: 'thunderbird'
         },
         {
             id: 'app2',
             name: 'C.V.',
             iconType: 'acrobatreader',
-            // content: <Acrobatreader />
+            contentType: 'acrobatreader'
         },
         {
             id: 'app3',
             name: 'Projets',
             iconType: 'chrome',
-            // content: <Chrome />
+            contentType: 'chrome'
         }
     ]
 
@@ -77,7 +78,7 @@ const Desktop = () => {
                         rel={app.id}
                         name={app.name}
                         icon={getIconComponent(app.iconType)}
-                        content={app.content}
+                        content={getContentComponent(app.contentType)}
                         initialPosition={app.position}
                         isFront={app.id === frontApp}
                         bringToFront={() => handleBringToFront(app.id)}
