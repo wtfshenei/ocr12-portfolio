@@ -12,7 +12,8 @@ export const windowsSlice = createSlice({
                 ...action.payload,
                 iconType: action.payload.iconType,
                 isMinimized: false,
-                isMaximized: false
+                isMaximized: false,
+                isFront: false
             };
             state.window.push(newWindow);
         },
@@ -49,7 +50,14 @@ export const windowsSlice = createSlice({
             );
         },
         frontWindow: (state, action) => {
-            state.frontWindow = action.payload;
+            state.window.forEach(win => {
+                win.isFront = false;
+            });
+            const index = state.window.findIndex(win => win.id === action.payload);
+            if (index !== -1) {
+                state.window[index].isFront = true;
+                state.frontWindow = action.payload;
+            }
         }
     }
 })

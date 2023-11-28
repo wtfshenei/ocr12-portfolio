@@ -12,15 +12,21 @@ const Taskbar = ({ props }) => {
 
     /**
      * Pour icônes de la barre des tâches.
-     * Fonction qui sert à minimiser une app si celle-ci est présente sur le bureau.
+     * Fonction qui sert à minimiser une app si celle-ci est présente sur le bureau et au 1er plan.
+     * Sinon met au 1er plan une app présente sur le bureau en arrière-plan.
      * Sinon fait réapparaitre une app minimisée en la mettant au 1er plan.
      */
-    const handleIconClick = (appId, isMinimized) => {
-        if (isMinimized) {
-            dispatch(restoreWindow(appId));
-            dispatch(frontWindow(appId))
-        } else {
-            dispatch(minimizeWindow(appId));
+    const handleIconClick = (appId) => {
+        const app = openApps.find(win => win.id === appId);
+        if (app) {
+            if (app.isFront) {
+                dispatch(minimizeWindow(appId));
+            } else {
+                if (app.isMinimized) {
+                    dispatch(restoreWindow(appId));
+                }
+                dispatch(frontWindow(appId));
+            }
         }
     }
 
