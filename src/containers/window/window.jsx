@@ -14,6 +14,10 @@ const Window = ({ props, rel, name, content, icon, isFront, initialPosition}) =>
     const [position, setPosition] = useState(posWin ? posWin.position : initialPosition || { x: 0, y: 0 })
     const [isFullScreen, setIsFullScreen] = useState(false)
 
+    /**
+     * Ouvre, par défaut, une fenêtre au milieu de l'écran.
+     * Sinon l'ouvre à son dernier emplacement sauvegardé.
+     */
     useEffect(() => {
         if (initialPosition && !posWin) {
             setPosition(initialPosition);
@@ -22,6 +26,9 @@ const Window = ({ props, rel, name, content, icon, isFront, initialPosition}) =>
         }
     }, [initialPosition, posWin]);
 
+    /**
+     * Fonction qui sert à switch entre plein écran et fenêtré
+     */
     const toggleFullScreen = () => {
         setIsFullScreen(!isFullScreen)
         if (isFullScreen) {
@@ -31,6 +38,9 @@ const Window = ({ props, rel, name, content, icon, isFront, initialPosition}) =>
         }
     }
 
+    /**
+     * Fonction qui sert à enregistrer la position d'une fenêtre déplacée
+     */
     const handleDragStop = (e, data) => {
         if (!isFullScreen) {
             const newPosition = { x: data.x, y: data.y };
@@ -39,14 +49,24 @@ const Window = ({ props, rel, name, content, icon, isFront, initialPosition}) =>
         }
     }
 
+    /**
+     * Fonction qui sert à minimiser une fenêtre
+     */
     const handleMinimize = () => {
         dispatch(minimizeWindow(rel, isFullScreen))
     }
 
+    /**
+     * Fonction qui sert à fermer une fenêtre
+     */
     const handleClose = () => {
         dispatch(closeWindow(rel))
     }
 
+    /**
+     * Fonction qui sert à mettre une fenêtre au 1er plan.
+     * En cliquant sur la fenêtre.
+     */
     const handleWindowClick = () => {
         dispatch(frontWindow(rel))
     }

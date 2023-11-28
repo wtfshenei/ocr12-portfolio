@@ -12,6 +12,9 @@ import {useNavigate} from "react-router-dom";
 const Login = () => {
     const navigate = useNavigate()
 
+    /**
+     * Envoie l'utilisateur vers le bureau.
+     */
     const handleClick = () => {
         navigate('/desktop')
     }

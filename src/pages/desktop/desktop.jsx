@@ -26,6 +26,12 @@ const Desktop = () => {
             name: 'Projets',
             iconType: 'chrome',
             contentType: 'chrome'
+        },
+        {
+            id: 'app4',
+            name: 'Présentation',
+            iconType: 'vscode',
+            contentType: 'vscode'
         }
     ]
 
@@ -33,6 +39,12 @@ const Desktop = () => {
     const openApps = useSelector((state) => state.windows.window)
     const frontApp = useSelector((state) => state.windows.frontWindow)
 
+    /**
+     * Crée une nouvelle fenêtre lorsque l'on ouvre une app pour la 1ère fois.
+     * Crée un décalage lors de l'ouverture de plusieurs apps.
+     * Empêche l'ouverture d'une même app plusieurs fois.
+     * Met au 1er plan l'app lors de son ouverture.
+     */
     const handleOpenWindow = (app) => {
         const isAppAlreadyOpen = openApps.some(openApp => openApp.id === app.id);
         if (!isAppAlreadyOpen) {
@@ -54,6 +66,9 @@ const Desktop = () => {
         }
     }
 
+    /**
+     * Fonction qui sert à mettre au 1er plan une app.
+     */
     const handleBringToFront = (rel) => {
         dispatch(frontWindow(rel))
     }

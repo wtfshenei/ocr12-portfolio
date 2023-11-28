@@ -10,6 +10,11 @@ const Taskbar = ({ props }) => {
     const openApps = useSelector((state) => state.windows.window)
     const frontApp = useSelector((state) => state.windows.frontWindow)
 
+    /**
+     * Pour icônes de la barre des tâches.
+     * Fonction qui sert à minimiser une app si celle-ci est présente sur le bureau.
+     * Sinon fait réapparaitre une app minimisée en la mettant au 1er plan.
+     */
     const handleIconClick = (appId, isMinimized) => {
         if (isMinimized) {
             dispatch(restoreWindow(appId));

@@ -55,7 +55,7 @@ export const TitlebarRight = styled.div`
 export const WindowContent = styled.div`
   width: 100%;
   height: calc(100% - 30px);
-  padding: 10px;
+  //padding: 10px;
   overflow: auto;
 `;
 
