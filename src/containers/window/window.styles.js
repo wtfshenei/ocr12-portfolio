@@ -29,8 +29,11 @@ export const WindowTitlebar = styled.div`
 export const TitlebarLeft = styled.div`
   display: flex;
   justify-content: flex-start;
+  align-items: center;
   width: 50%;
+  height: 100%;
   font-weight: bold;
+  margin-bottom: 2px;
 `
 
 export const TitlebarLeftIcon = styled.div`
