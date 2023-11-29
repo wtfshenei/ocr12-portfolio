@@ -40,9 +40,15 @@ export const windowsSlice = createSlice({
             });
         },
         minimizeWindow: (state, action) => {
-            state.window = state.window.map(win =>
-                win.id === action.payload ? {...win, isMinimized: true, wasFullScreen: win.isMaximized} : win
-            );
+            state.window = state.window.map(win => {
+                if (win.id === action.payload) {
+                    return {...win, isMinimized: true, isFront: false, wasFullScreen: win.isMaximized };
+                }
+                return win;
+            });
+            if (state.frontWindow === action.payload) {
+                state.frontWindow = null;
+            }
         },
         positionWindow: (state, action) => {
             state.window = state.window.map(win =>
