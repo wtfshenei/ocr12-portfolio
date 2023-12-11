@@ -1,5 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import LogoWindows from "../../components/logoWindows/logoWindows";
+import {theme} from "../../assets/styles/theme.styles";
 
 export const WaveAnim = keyframes`
   0% {
@@ -28,8 +29,8 @@ export const WrapperCenter = styled.div`
 `;
 
 export const StyledLogoWindows = styled(LogoWindows)`
-  width: 100px;
-  height: 100px;
+  width: 6.66em;
+  height: 6.66em;
   animation: ${WaveAnim} 2s ease-in-out infinite;
-  fill: #FFF;
+  fill: ${theme.colors.color3};
 `;

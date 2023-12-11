@@ -42,7 +42,7 @@ export const windowsSlice = createSlice({
         minimizeWindow: (state, action) => {
             state.window = state.window.map(win => {
                 if (win.id === action.payload) {
-                    return {...win, isMinimized: true, isFront: false, wasFullScreen: win.isMaximized };
+                    return {...win, isMinimized: true, isFront: false };
                 }
                 return win;
             });

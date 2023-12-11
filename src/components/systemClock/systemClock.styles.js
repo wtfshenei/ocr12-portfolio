@@ -9,5 +9,5 @@ export const WrapperDate = styled.div`
 
 export const DisplayDate = styled.p`
   margin: 0;
-  font-size: 14px;
+  font-size: 0.9em;
 `

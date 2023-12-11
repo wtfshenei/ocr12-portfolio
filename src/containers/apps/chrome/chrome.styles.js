@@ -1,5 +1,6 @@
 import styled, {keyframes} from "styled-components";
 import Button from "../../../components/button/button";
+import {theme} from "../../../assets/styles/theme.styles";
 
 export const ContentContainer = styled.div`
   display: flex;
@@ -21,16 +22,16 @@ export const MainBar = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 40px;
+  height: 2.2em;
   background-color: burlywood;
-  padding: 0 10px;
+  padding: 0 0.8em;
   
   input {
     width: 70%;
-    height: 30px;
-    border-radius: 30px;
+    height: 2em;
+    border-radius: 2em;
     border: none;
-    padding: 0 15px;
+    padding: 0 1em;
   }
   
   button {
@@ -38,7 +39,7 @@ export const MainBar = styled.div`
     align-items: center;
     justify-content: center;
     height: 80%;
-    width: 35px;
+    width: 2.1em;
     background: none;
     border: none;
     
@@ -53,12 +54,12 @@ export const LeftMainBar = styled.div`
   flex-direction: row;
   align-items: center;
   height: 100%;
-  margin-right: 15px;
+  margin-right: 1em;
   
   svg {
-    height: 15px;
-    width: 15px;
-    fill: ${({ disabled }) => disabled ? 'grey' : 'white' }
+    height: 1em;
+    width: 1em;
+    fill: ${({ disabled }) => disabled ? theme.colors.color2 : theme.colors.color3 }
   }
 `
 export const RightMainBar = styled.div`
@@ -66,12 +67,12 @@ export const RightMainBar = styled.div`
   flex-direction: row;
   align-items: center;
   height: 100%;
-  margin-left: 15px;
+  margin-left: 1em;
   
   svg {
-    height: 20px;
-    width: 20px;
-    fill: dodgerblue;
+    height: 1.2em;
+    width: 1.2em;
+    margin-right: 1em;
   }
 `
 export const BookmarksBar = styled.div`
@@ -79,9 +80,9 @@ export const BookmarksBar = styled.div`
   justify-content: flex-start;
   align-items: center;
   width: 100%;
-  height: 30px;
+  height: 2em;
   background-color: cadetblue;
-  padding: 0 15px;
+  padding: 0 1em;
 `
 export const ContentNavigator = styled.div`
   display: flex;
@@ -98,11 +99,11 @@ const spin = keyframes`
   }
 `
 export const Loading = styled.div`
-  border: 4px solid darkgrey;
-  border-top: 4px solid cornflowerblue;
+  border: 0.25em solid ${theme.colors.color2};
+  border-top: 0.25em solid ${theme.colors.color1};
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 3.5em;
+  height: 3.5em;
   animation: ${spin} 1s linear infinite;
 `
 export const LoadingContainer = styled.div`
@@ -119,8 +120,8 @@ export const ButtonNavigator = styled(Button)`
   height: 80%;
   background: none;
   border: none;
-  margin-right: 5px;
-  color: white;
+  margin-right: 0.3em;
+  color: ${theme.colors.color3};
 
   &:hover {
     border-radius: 50px;
@@ -128,9 +129,9 @@ export const ButtonNavigator = styled(Button)`
   }
 
   svg {
-    height: 15px;
-    width: 15px;
-    fill: ${({ disabled }) => disabled ? 'darkgrey' : 'white' }
+    height: 1em;
+    width: 1em;
+    fill: ${({ disabled }) => disabled ? theme.colors.color2 : theme.colors.color3 }
   }
 `
 export const BookmarkButton = styled(Button)`
@@ -140,17 +141,17 @@ export const BookmarkButton = styled(Button)`
   height: 80%;
   background: none;
   border: none;
-  margin-right: 5px;
-  color: white;
+  margin-right: 0.33em;
+  color: ${theme.colors.color3};
 
   ${({ isActive }) => isActive && `
-    background-color: lightblue;
+    background-color: ${theme.colors.color5};
     border-radius: 50px;
-    color: black;
+    color: ${theme.colors.color4};
     font-weight: bold;
     
     svg {
-      fill: black;  
+      fill: ${theme.colors.color4};  
     }
   `}
 
@@ -162,9 +163,9 @@ export const BookmarkButton = styled(Button)`
   svg {
     display: flex;
     align-items: center;
-    height: 13px;
-    width: 13px;
-    margin-right: 5px;
-    fill: white;
+    height: 0.98em;
+    width: 0.98em;
+    margin-right: 0.33em;
+    fill: ${theme.colors.color3};
   }
 `

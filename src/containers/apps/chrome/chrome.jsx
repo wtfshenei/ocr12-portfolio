@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import {BookmarkButton, BookmarksBar, ButtonNavigator, ContentContainer, ContentNavigator, HeaderNavigator, LeftMainBar, Loading, LoadingContainer, MainBar, RightMainBar} from "./chrome.styles";
-import Button from "../../../components/button/button";
 import Input from "../../../components/input/input";
 import ReactIcon from "../../../components/utils/icons/react/reactIcon";
 import ArrowLeft from "../../../components/utils/icons/webBrowser/arrowLeft";
@@ -8,6 +7,8 @@ import ArrowRight from "../../../components/utils/icons/webBrowser/arrowRight";
 import Reload from "../../../components/utils/icons/webBrowser/reload";
 import House from "../../../components/utils/icons/webBrowser/house";
 import Javascript from "../../../components/utils/icons/javascript/javascript";
+import ReduxIcon from "../../../components/utils/icons/redux/reduxIcon";
+
 
 const Chrome = () => {
     const projects = [
@@ -34,6 +35,8 @@ const Chrome = () => {
     const [currentProject, setCurrentProject] = useState(projects[0])
     const [currentIndex, setCurrentIndex] = useState(0)
     const [isLoading, setIsLoading] = useState(false)
+    const iconReactColor = currentProject.id === 'project1' ? 'grey' : 'dodgerblue'
+    const iconReduxColor = currentProject.id === 'project1' ? 'grey' : 'blueviolet'
 
     const handleBookmarkClick = (index) => {
         setIsLoading(true)
@@ -70,7 +73,8 @@ const Chrome = () => {
                     </LeftMainBar>
                     <Input disabled value={`http://localhost:3000/${currentProject.title}`}></Input>
                     <RightMainBar>
-                        <Button><ReactIcon /></Button>
+                        <ReactIcon color={iconReactColor} />
+                        <ReduxIcon color={iconReduxColor} />
                     </RightMainBar>
                 </MainBar>
                 <BookmarksBar>
