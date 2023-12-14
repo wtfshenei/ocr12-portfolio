@@ -8,6 +8,8 @@ export const theme = {
         color6: "grey",
         color7: "transparent",
         color8: "blue",
-        color9: "#ddd"
+        color9: "#ddd",
+        color10: "green",
+        color11: "#A129F0"
     }
 }
