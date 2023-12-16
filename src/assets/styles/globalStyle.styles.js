@@ -12,6 +12,9 @@ export const GlobalStyle = createGlobalStyle`
   
   *, *::before, *::after {
     box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    white-space: normal;
   }
 
   // FONTS
