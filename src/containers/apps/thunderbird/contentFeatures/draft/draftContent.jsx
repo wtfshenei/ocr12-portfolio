@@ -1,52 +1,41 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Message, MessageDisplay, MessagesListContainer, MessagesWrapperContent} from "../inbox/inboxContent.styles";
-import {useDispatch, useSelector} from "react-redux";
+import {useSelector} from "react-redux";
 import {theme} from "../../../../../assets/styles/theme.styles";
-import {saveDraft} from "../../../../../redux/emails/emailsSlice";
+import {dateFormater} from "../../../../../utils/dateFormater";
 
 const DraftContent = () => {
-    const [activeDraft, setActiveDraft] = useState(false);
-    const draft = useSelector((state) => state.mails.draft)
-    const [from, setFrom] = useState('')
-    const [subject, setSubject] = useState('')
-    const [message, setMessage] = useState('')
-    const dispatch = useDispatch()
+    const [activeDraftId, setActiveDraftId] = useState(null);
+    const drafts = useSelector((state) => state.mails.drafts)
 
-    useEffect(() => {
-        const localDraft = localStorage.getItem('draft')
-        if (localDraft) {
-            const parsedLocalDraft = JSON.parse(localDraft)
-            setFrom(parsedLocalDraft.from);
-            setSubject(parsedLocalDraft.subject);
-            setMessage(parsedLocalDraft.message);
-        }
-    }, [])
-
-    useEffect(() => {
-        if (from || subject || message) {
-            dispatch(saveDraft({ from, subject, message }))
-        }
-    }, [from, subject, message, dispatch])
-
-    const toggleActiveDraft = () => {
-        setActiveDraft(!activeDraft);
+    const toggleActiveDraft = (id) => {
+        setActiveDraftId(activeDraftId === id ? null : id);
     }
 
     return (
         <MessagesWrapperContent>
-            {draft && (
-                <MessagesListContainer onClick={toggleActiveDraft} style={{ backgroundColor: activeDraft ? theme.colors.color1 : '' }}>
+            {drafts.map((draft) => (
+                <MessagesListContainer
+                    key={draft.id}
+                    onClick={() => toggleActiveDraft(draft.id)}
+                    style={{ backgroundColor: activeDraftId === draft.id ? theme.colors.color1 : '' }}
+                >
                     <Message>
-                        <span>{draft.from}</span>
+                        <div className={'first-line'}>
+                            <span>{draft.from}</span>
+                            <span>{dateFormater(draft.id)}</span>
+                        </div>
                         <span>{draft.subject}</span>
                     </Message>
                 </MessagesListContainer>
-            )}
-            {activeDraft && (
-                <MessageDisplay>
-                    <p>{draft.message}</p>
-                </MessageDisplay>
-            )}
+            ))}
+            {drafts.map((draft) => (
+                activeDraftId === draft.id && (
+                    <MessageDisplay key={draft.id}>
+                        <p>{draft.message}</p>
+                    </MessageDisplay>
+                )
+            ))}
         </MessagesWrapperContent>
     );
 }

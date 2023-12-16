@@ -1,17 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import {Message, MessageDisplay, MessagesListContainer, MessagesWrapperContent} from "./inboxContent.styles";
 import {theme} from "../../../../../assets/styles/theme.styles";
+import {dateFormater} from "../../../../../utils/dateFormater";
 
 const InboxContent = () => {
     const [activeMail, setActiveMail] = useState(false)
-    const [currentDateTime, setCurrentDateTime] = useState('')
-
-    useEffect(() => {
-        const now = new Date()
-        const formattedDate = now.toLocaleDateString('fr-FR')
-        const formattedTime = now.toLocaleTimeString('fr-FR', { hour: "2-digit", minute: "2-digit" })
-        setCurrentDateTime(`Le ${formattedDate}, A ${formattedTime}`)
-    }, [])
 
     const toggleActiveMail = () => {
         setActiveMail(!activeMail)
@@ -23,7 +16,7 @@ const InboxContent = () => {
                 <Message>
                     <div className={'first-line'}>
                         <span>Ludovic Parriaud</span>
-                        <span>{currentDateTime}</span>
+                        <span>{dateFormater(Date.now())}</span>
                     </div>
                     <span>Bienvenue sur mon portfolio !</span>
                 </Message>

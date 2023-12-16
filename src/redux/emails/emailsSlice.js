@@ -1,11 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    draft: {
-        from: '',
-        subject: '',
-        message: ''
-    },
+    drafts: [],
     sentMessages: []
 }
 
@@ -14,18 +10,27 @@ export const mailsSlice = createSlice({
     initialState,
     reducers: {
         saveDraft: (state, action) => {
-            state.draft = { ...state.draft, ...action.payload }
-            localStorage.setItem('draft', JSON.stringify(state.draft))
+            const existingDraftIndex = state.drafts.findIndex(d => d.id === action.payload.id);
+            if (existingDraftIndex !== -1) {
+                state.drafts[existingDraftIndex] = action.payload;
+            } else {
+                state.drafts.push(action.payload);
+            }
+            localStorage.setItem('drafts', JSON.stringify(state.drafts));
+        },
+        deleteDraft: (state, action) => {
+            state.drafts = state.drafts.filter(d => d.id !== action.payload);
+            localStorage.setItem('drafts', JSON.stringify(state.drafts));
         },
         sendMail: (state, action) => {
-            state.sentMessages.push(action.payload)
-            localStorage.setItem('sentMessages', JSON.stringify(state.sentMessages))
-            state.draft = initialState.draft
-            localStorage.removeItem('draft')
+            state.sentMessages.push(action.payload);
+            localStorage.setItem('sentMessages', JSON.stringify(state.sentMessages));
+            state.drafts = state.drafts.filter(d => d.id !== action.payload.id);
+            localStorage.setItem('drafts', JSON.stringify(state.drafts));
         }
     }
 })
 
-export const { saveDraft, sendMail } = mailsSlice.actions
+export const { saveDraft, sendMail, deleteDraft } = mailsSlice.actions
 
 export default mailsSlice.reducer
