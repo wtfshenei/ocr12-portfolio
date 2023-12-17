@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     overflow-wrap: break-word;
     word-wrap: break-word;
     white-space: normal;
+    list-style: none;
   }
 
   // FONTS

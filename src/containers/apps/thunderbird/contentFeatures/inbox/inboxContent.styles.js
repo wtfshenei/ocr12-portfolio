@@ -5,6 +5,11 @@ export const MessagesWrapperContent = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  
+  ul {
+    padding: 0;
+    margin: 0;
+  }
 `
 export const MessagesListContainer = styled.div`
   display: flex;
@@ -33,6 +38,28 @@ export const MessageDisplay = styled.div`
   padding: 1em;
   width: 100%;
   white-space: pre-wrap;
+  background-color: ${theme.colors.color5};
+  
+  .draft-display {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    
+    button {
+      background: none;
+      border: none;
+      width: 1.3em;
+      height: 1.3em;
+      margin-left: 0.66em;
+      
+        svg {
+          margin: -50%;
+          width: 1em;
+          height: 1em;
+          fill: ${theme.colors.color4};
+        }
+    }
+  }
   
   p {
     padding-top: 0;

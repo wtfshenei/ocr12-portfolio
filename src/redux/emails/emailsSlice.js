@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     drafts: [],
-    sentMessages: []
+    sentMessages: [],
+    editDraft: null
 }
 
 export const mailsSlice = createSlice({
@@ -19,18 +20,22 @@ export const mailsSlice = createSlice({
             localStorage.setItem('drafts', JSON.stringify(state.drafts));
         },
         deleteDraft: (state, action) => {
-            state.drafts = state.drafts.filter(d => d.id !== action.payload);
+            state.drafts = state.drafts.filter(draft => draft.id !== action.payload);
+            if (state.editDraft && state.editDraft.id === action.payload) {
+                state.editDraft = null;
+            }
             localStorage.setItem('drafts', JSON.stringify(state.drafts));
         },
         sendMail: (state, action) => {
             state.sentMessages.push(action.payload);
             localStorage.setItem('sentMessages', JSON.stringify(state.sentMessages));
-            state.drafts = state.drafts.filter(d => d.id !== action.payload.id);
-            localStorage.setItem('drafts', JSON.stringify(state.drafts));
+        },
+        setEditDraft: (state, action) => {
+            state.editDraft = action.payload
         }
     }
 })
 
-export const { saveDraft, sendMail, deleteDraft } = mailsSlice.actions
+export const { saveDraft, sendMail, deleteDraft, setEditDraft } = mailsSlice.actions
 
 export default mailsSlice.reducer

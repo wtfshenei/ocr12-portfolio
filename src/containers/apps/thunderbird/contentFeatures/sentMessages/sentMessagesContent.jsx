@@ -1,41 +1,20 @@
-import React, {useState} from 'react';
-import {Message, MessageDisplay, MessagesListContainer, MessagesWrapperContent} from "../inbox/inboxContent.styles";
+import React from 'react';
+import {MessagesWrapperContent} from "../inbox/inboxContent.styles";
 import {useSelector} from "react-redux";
-import {theme} from "../../../../../assets/styles/theme.styles";
-import {dateFormater} from "../../../../../utils/dateFormater";
+import Dropdown from "../../../../../components/dropdown/dropdown";
+import sortItems from "../../../../../utils/sortItems";
 
 const SentMessagesContent = () => {
-    const [activeSentMessageId, setActiveSentMessageId] = useState(null);
     const sentMessages = useSelector((state) => state.mails.sentMessages)
-
-    const toggleActiveSentMessages = (id) => {
-        setActiveSentMessageId(activeSentMessageId === id ? null : id);
-    }
+    const sortedSentMessages = sortItems(sentMessages, 'sendDate')
 
     return (
         <MessagesWrapperContent>
-            {sentMessages.map((sentMessage) => (
-                <MessagesListContainer
-                    key={sentMessage.id}
-                    onClick={() => toggleActiveSentMessages(sentMessage.id)}
-                    style={{ backgroundColor: activeSentMessageId === sentMessage.id ? theme.colors.color1 : '' }}
-                >
-                    <Message>
-                        <div className={'first-line'}>
-                            <span>{sentMessage.from}</span>
-                            <span>{dateFormater(sentMessage.sendDate)}</span>
-                        </div>
-                        <span>{sentMessage.subject}</span>
-                    </Message>
-                </MessagesListContainer>
-            ))}
-            {sentMessages.map((sentMessage) => (
-                activeSentMessageId === sentMessage.id && (
-                    <MessageDisplay key={sentMessage.id}>
-                        <p>{sentMessage.message}</p>
-                    </MessageDisplay>
-                )
-            ))}
+            <ul>
+                {sortedSentMessages.map((sentMessage) => (
+                    <Dropdown key={sentMessage.id} id={sentMessage.id} from={sentMessage.from} subject={sentMessage.subject} date={sentMessage.sendDate} message={sentMessage.message} isDraft={false} />
+                ))}
+            </ul>
         </MessagesWrapperContent>
     );
 }

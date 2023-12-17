@@ -8,9 +8,10 @@ export const WindowContainer = styled.div`
   height: ${({ $isFullScreen }) => $isFullScreen ? 'calc(100% - 3em)' : '70vh'};
   background-color: ${theme.colors.color3};
   box-shadow: 0 0.25em 0.53em rgba(0, 0, 0, 0.1);
-  overflow: hidden;
   border: ${({ $isFront }) => $isFront ? `0.13em solid ${theme.colors.color8}` : `0.13em solid ${theme.colors.color4}`};
   z-index: ${({ $isFront }) => $isFront ? 2000 : 1000};
+  overflow: auto;
+  resize: both;
 `;
 
 export const WindowTitlebar = styled.div`

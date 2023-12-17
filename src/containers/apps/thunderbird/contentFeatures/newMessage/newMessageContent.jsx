@@ -2,39 +2,46 @@ import React, {useEffect, useState} from 'react';
 import Input from "../../../../../components/input/input";
 import {FormButton, FormContainer, FormField, InputMessage} from "./newMessageContent.styles";
 import Paperplane from "../../../../../components/utils/icons/mailApp/paperplane";
-import {useDispatch} from "react-redux";
-import {saveDraft, sendMail} from "../../../../../redux/emails/emailsSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {deleteDraft, saveDraft, sendMail} from "../../../../../redux/emails/emailsSlice";
 import emailjs from 'emailjs-com'
 
-const NewMessageContent = () => {
+const NewMessageContent = ({ onDraftSend }) => {
+    const editDraft = useSelector(state => state.mails.editDraft)
     const [email, setEmail] = useState('')
     const [subject, setSubject] = useState('')
     const [message, setMessage] = useState('')
     const [draftId, setDraftId] = useState(null)
-    const [isDraftStarted, setIsDraftStarted] = useState(false)
+    const [isDraftStarted, setIsDraftStarted] = useState(!!editDraft)
+    const [isModified, setIsModified] = useState(false)
     const dispatch = useDispatch()
 
     useEffect(() => {
-        if (draftId) {
-            dispatch(saveDraft({ id: draftId, from: email, subject, message }));
+        if (editDraft) {
+            setEmail(editDraft.from);
+            setSubject(editDraft.subject);
+            setMessage(editDraft.message);
+            setDraftId(editDraft.id);
+            setIsDraftStarted(true);
         }
-    }, [email, subject, message, dispatch, draftId])
+    }, [editDraft])
+
+    useEffect(() => {
+        if (isDraftStarted && isModified) {
+            dispatch(saveDraft({ id: draftId || Date.now(), from: email, subject, message }));
+        }
+    }, [email, subject, message, dispatch, draftId, isDraftStarted, isModified])
 
     const handleInputChange = (e, type) => {
         const value = e.target.value;
-
-        if (!isDraftStarted) {
+        setIsModified(true);
+        if (!isDraftStarted && !editDraft) {
             setDraftId(Date.now());
             setIsDraftStarted(true);
         }
-
-        if (type === 'email') {
-            setEmail(value);
-        } else if (type === 'subject') {
-            setSubject(value);
-        } else if (type === 'message') {
-            setMessage(value);
-        }
+        if (type === 'email') setEmail(value);
+        else if (type === 'subject') setSubject(value);
+        else if (type === 'message') setMessage(value);
     }
 
     const handleSendMail = (e) => {
@@ -48,11 +55,14 @@ const NewMessageContent = () => {
             .then((result) => {
                 console.log('Email successfully sent', result.status, result.text)
                 dispatch(sendMail({ id: draftId, from: email, subject, message, sendDate: Date.now() }))
-                setEmail('')
-                setSubject('')
-                setMessage('')
-                setDraftId(null)
+                dispatch(deleteDraft(draftId))
+                // setEmail('')
+                // setSubject('')
+                // setMessage('')
+                // setDraftId(null)
                 setIsDraftStarted(false)
+                setIsModified(false)
+                onDraftSend()
                 // TODO : faire message de confirmation
             }, (error) => {
                 console.log('Failed to send email', error)

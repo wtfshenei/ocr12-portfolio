@@ -24,13 +24,16 @@ import InboxContent from "./contentFeatures/inbox/inboxContent";
 import DraftContent from "./contentFeatures/draft/draftContent";
 import SentMessagesContent from "./contentFeatures/sentMessages/sentMessagesContent";
 import NewMessageContent from "./contentFeatures/newMessage/newMessageContent";
-import {useDispatch} from "react-redux";
-import {saveDraft, sendMail} from "../../../redux/emails/emailsSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {saveDraft, sendMail, setEditDraft} from "../../../redux/emails/emailsSlice";
 
 const Thunderbird = () => {
     const [activeFeature, setActiveFeature] = useState('InboxContent')
     const [activeFeatureTitle, setActiveFeatureTitle] = useState('Boîte de réception')
     const dispatch = useDispatch()
+    const sentMessagesInStore = useSelector(state => state.mails.sentMessages)
+    const [isEditingDraft, setIsEditingDraft] = useState(false)
+    const [draftToEdit, setDraftToEdit] = useState(null)
 
     useEffect(() => {
         const draftsFromLocalStorage = localStorage.getItem('drafts');
@@ -46,21 +49,44 @@ const Thunderbird = () => {
         if (sentMessagesFromLocalStorage) {
             const sentMessages = JSON.parse(sentMessagesFromLocalStorage);
             sentMessages.forEach(sentMessage => {
-                dispatch(sendMail(sentMessage));
-            })
+                const isMessageInStore = sentMessagesInStore.some(message => message.id === sentMessage.id);
+                if (!isMessageInStore) {
+                    dispatch(sendMail(sentMessage));
+                }
+            });
         }
-    }, [dispatch])
+    }, [dispatch, sentMessagesInStore])
 
     const handleSetActiveFeature = (feature, title) => {
         setActiveFeature(feature)
         setActiveFeatureTitle(title)
+        if (isEditingDraft) {
+            setIsEditingDraft(false)
+            setDraftToEdit(null)
+            dispatch(setEditDraft(null))
+        }
     }
+
+    const handleEditDraft = (draft) => {
+        dispatch(setEditDraft(draft))
+        setIsEditingDraft(true)
+        setActiveFeature('NewMessageContent')
+    }
+
+    const handleDraftSent = () => {
+        setIsEditingDraft(false)
+        setDraftToEdit(null)
+    }
+
     const renderContent = () => {
+        if (isEditingDraft) {
+            return <NewMessageContent draft={draftToEdit} onDraftSend={handleDraftSent} />
+        }
         switch (activeFeature) {
             case 'InboxContent':
                 return <InboxContent />
             case 'DraftContent':
-                return <DraftContent />
+                return <DraftContent onEditDraft={handleEditDraft} />
             case 'SentMessagesContent':
                 return <SentMessagesContent />
             case 'NewMessageContent':
