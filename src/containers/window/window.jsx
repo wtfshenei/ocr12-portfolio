@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {ButtonWindow, TitlebarLeft, TitlebarLeftIcon, TitlebarRight, WindowContainer, WindowContent, WindowTitlebar} from "./window.styles";
+import {ButtonWindow, TitlebarLeft, TitlebarLeftIcon, TitlebarRight, WindowContainer, WindowContent, WindowTitlebar} from "./window.styled";
 import Cross from "./assets/cross/cross";
 import Minus from "./assets/minus/minus";
 import Square from "./assets/square/square";

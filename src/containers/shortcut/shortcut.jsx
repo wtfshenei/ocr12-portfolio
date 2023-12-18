@@ -1,5 +1,5 @@
 import React from 'react';
-import {ShortcutWrapper} from "./shortcut.styles";
+import {ShortcutWrapper} from "./shortcut.styled";
 
 const Shortcut = ( {rel, name, icon, onClick} ) => {
     return (

@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Message, MessageDisplay, MessagesListContainer, MessagesWrapperContent} from "./inboxContent.styles";
+import {Message, MessageDisplay, MessagesListContainer, MessagesWrapperContent} from "./inboxContent.styled";
 import {theme} from "../../../../../assets/styles/theme.styles";
 import {dateFormater} from "../../../../../utils/dateFormater";
 

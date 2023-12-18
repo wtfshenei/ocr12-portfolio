@@ -1,5 +1,5 @@
 import React from 'react';
-import {AppIconContainer, LogoWindowsSmall, TaskbarStyled, WrapperLeft, WrapperRight} from "./taskbar.styles";
+import {AppIconContainer, LogoWindowsSmall, TaskbarStyled, WrapperLeft, WrapperRight} from "./taskbar.styled";
 import SystemClock from "../../components/systemClock/systemClock";
 import {useDispatch, useSelector} from "react-redux";
 import {frontWindow, restoreWindow, minimizeWindow} from '../../redux/windows/windowsSlice'

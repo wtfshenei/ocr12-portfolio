@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import Input from "../../../../../components/input/input";
-import {FormButton, FormContainer, FormField, InputMessage} from "./newMessageContent.styles";
+import {FormButton, FormContainer, FormField, InputMessage} from "./newMessageContent.styled";
 import Paperplane from "../../../../../components/utils/icons/mailApp/paperplane";
 import {useDispatch, useSelector} from "react-redux";
 import {deleteDraft, saveDraft, sendMail} from "../../../../../redux/emails/emailsSlice";

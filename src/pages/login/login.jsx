@@ -6,7 +6,7 @@ import {
     UserName,
     WrapperCenterTop,
     WrapperColumn
-} from "./login.styles";
+} from "./login.styled";
 import {useNavigate} from "react-router-dom";
 
 const Login = () => {

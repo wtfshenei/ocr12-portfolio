@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {DisplayDate, WrapperDate} from "./systemClock.styles";
+import {DisplayDate, WrapperDate} from "./systemClock.styled";
 
 const SystemClock = () => {
     const [currentDateTime, setCurrentDateTime] = useState(new Date())

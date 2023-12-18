@@ -1,5 +1,5 @@
 import React from 'react';
-import {DesktopContainer, ShortcutsWrapper, TaskbarDisplay} from "./desktop.styles";
+import {DesktopContainer, ShortcutsWrapper, TaskbarDisplay} from "./desktop.styled";
 import Shortcut from "../../containers/shortcut/shortcut";
 import Window from "../../containers/window/window";
 import {useDispatch, useSelector} from "react-redux";

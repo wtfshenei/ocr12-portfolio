@@ -1,5 +1,5 @@
 import React from 'react';
-import {CircleIcon} from "./userIcon.styles";
+import {CircleIcon} from "./userIcon.styled";
 import UserIconImg from "./userIconImg";
 
 const UserIcon = (props) => {

@@ -22,7 +22,7 @@ export const WindowTitlebar = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0 0.33em 0 0.66em;
-  
+
   &.handle {
     cursor: move;
   }
@@ -48,7 +48,7 @@ export const TitlebarRight = styled.div`
   display: flex;
   justify-content: flex-end;
   width: 50%;
-  
+
   svg {
     width: 1.1em;
     height: 1.1em;
@@ -82,12 +82,12 @@ export const ButtonWindow = styled(Button)`
   width: 1.66em;
   height: 2em;
   margin-right: 0.33em;
-  
+
   svg {
     padding: 0;
     margin: 0;
   }
-  
+
   &:nth-child(3) {
     margin-right: 0;
   }

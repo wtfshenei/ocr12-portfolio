@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {BookmarkButton, BookmarksBar, ButtonNavigator, ContentContainer, ContentNavigator, HeaderNavigator, LeftMainBar, Loading, LoadingContainer, MainBar, RightMainBar} from "./chrome.styles";
+import {BookmarkButton, BookmarksBar, ButtonNavigator, ContentContainer, ContentNavigator, HeaderNavigator, LeftMainBar, Loading, LoadingContainer, MainBar, RightMainBar} from "./chrome.styled";
 import Input from "../../../components/input/input";
 import ReactIcon from "../../../components/utils/icons/react/reactIcon";
 import ArrowLeft from "../../../components/utils/icons/webBrowser/arrowLeft";

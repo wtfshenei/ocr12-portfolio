@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {Message, MessageDisplay, MessagesListContainer} from "../../containers/apps/thunderbird/contentFeatures/inbox/inboxContent.styles";
+import {Message, MessageDisplay, MessagesListContainer} from "../../containers/apps/thunderbird/contentFeatures/inbox/inboxContent.styled";
 import {theme} from "../../assets/styles/theme.styles";
 import {dateFormater} from "../../utils/dateFormater";
 import Pencil from "../utils/icons/mailApp/pencil";
