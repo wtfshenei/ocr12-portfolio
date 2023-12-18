@@ -14,7 +14,7 @@ import {
     MenuTitleLeft,
     NewMessageButton,
     VerticalBar
-} from "./thunderbird.styles";
+} from "./thunderbird.styled";
 import Envelope from "../../../components/utils/icons/mailApp/envelope";
 import Inbox from "../../../components/utils/icons/mailApp/inbox";
 import Paperplane from "../../../components/utils/icons/mailApp/paperplane";
@@ -26,6 +26,8 @@ import SentMessagesContent from "./contentFeatures/sentMessages/sentMessagesCont
 import NewMessageContent from "./contentFeatures/newMessage/newMessageContent";
 import {useDispatch, useSelector} from "react-redux";
 import {saveDraft, sendMail, setEditDraft} from "../../../redux/emails/emailsSlice";
+import AngleDown from "../../../components/utils/icons/angles/angleDown";
+import AngleRight from "../../../components/utils/icons/angles/angleRight";
 
 const Thunderbird = () => {
     const [activeFeature, setActiveFeature] = useState('InboxContent')
@@ -104,26 +106,30 @@ const Thunderbird = () => {
                 </ContentLeftBar>
                 <MenuLeft>
                     <MenuTitleLeft>
+                        <AngleDown />
                         <Envelope color={theme.colors.color1} />
                         <MailVisitor>visiteur@portfolio-LP</MailVisitor>
                     </MenuTitleLeft>
                     <MenuItemsLeft>
                         <li onClick={() => handleSetActiveFeature('InboxContent', 'Boîte de réception')}>
                             <MailingServiceButton active={activeFeature === 'InboxContent'}>
+                                <AngleRight />
                                 <Inbox color={theme.colors.color1} />
-                                <MailingServiceSpan>Boîte de réception</MailingServiceSpan>
+                                <MailingServiceSpan>Boîte de réception (1)</MailingServiceSpan>
                             </MailingServiceButton>
                         </li>
                         <li onClick={() => handleSetActiveFeature('DraftContent', 'Brouillons')}>
                             <MailingServiceButton active={activeFeature === 'DraftContent'}>
+                                <AngleRight />
                                 <Note color={theme.colors.color11} />
-                                <MailingServiceSpan>Brouillons</MailingServiceSpan>
+                                <MailingServiceSpan>Brouillons ({useSelector(state => state.mails.drafts).length})</MailingServiceSpan>
                             </MailingServiceButton>
                         </li>
                         <li onClick={() => handleSetActiveFeature('SentMessagesContent', 'Messages Envoyés')}>
                             <MailingServiceButton active={activeFeature === 'SentMessagesContent'}>
+                                <AngleRight />
                                 <Paperplane color={theme.colors.color10} />
-                                <MailingServiceSpan>Messages envoyés</MailingServiceSpan>
+                                <MailingServiceSpan>Messages envoyés ({useSelector(state => state.mails.sentMessages).length})</MailingServiceSpan>
                             </MailingServiceButton>
                         </li>
                     </MenuItemsLeft>
