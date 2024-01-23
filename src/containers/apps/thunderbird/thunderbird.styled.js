@@ -13,6 +13,7 @@ export const ContentContainer = styled.div`
 export const ContentLeftWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  max-width: 250px;  
   width: 25%;
   height: 100%;
 `
@@ -80,7 +81,7 @@ export const NewMessageButton = styled(Button)`
 export const ContentRightWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 100%;
   height: 100%;
 `
 export const ContentRightBar = styled.div`
