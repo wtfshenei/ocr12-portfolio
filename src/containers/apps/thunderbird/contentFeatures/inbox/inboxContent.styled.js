@@ -51,6 +51,7 @@ export const MessageDisplay = styled.div`
       width: 1.3em;
       height: 1.3em;
       margin-left: 0.66em;
+      cursor: pointer;
       
         svg {
           margin: -50%;

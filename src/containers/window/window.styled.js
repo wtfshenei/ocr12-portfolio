@@ -4,14 +4,12 @@ import {theme} from "../../assets/styles/theme.styles";
 
 export const WindowContainer = styled.div`
   position: fixed;
-  width: ${({ $isFullScreen }) => $isFullScreen ? '100%' : '70vw'};
-  height: ${({ $isFullScreen }) => $isFullScreen ? 'calc(100% - 3em)' : '70vh'};
+  width: ${({ $isFullScreen }) => $isFullScreen ? '100vw' : '70vw'};
+  height: ${({ $isFullScreen }) => $isFullScreen ? 'calc(100vh - 3em)' : '70vh'};
   background-color: ${theme.colors.color3};
   box-shadow: 0 0.25em 0.53em rgba(0, 0, 0, 0.1);
   border: ${({ $isFront }) => $isFront ? `0.13em solid ${theme.colors.color8}` : `0.13em solid ${theme.colors.color4}`};
   z-index: ${({ $isFront }) => $isFront ? 2000 : 1000};
-  overflow: auto;
-  resize: both;
 `;
 
 export const WindowTitlebar = styled.div`
@@ -74,21 +72,22 @@ export const WindowContent = styled.div`
 // `
 
 export const ButtonWindow = styled(Button)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: none;
-  border: none;
-  width: 1.66em;
-  height: 2em;
-  margin-right: 0.33em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: none;
+    width: 1.66em;
+    height: 2em;
+    margin-right: 0.33em;
+    z-index: 50;
 
-  svg {
-    padding: 0;
-    margin: 0;
-  }
+    svg {
+        padding: 0;
+        margin: 0;
+    }
 
-  &:nth-child(3) {
-    margin-right: 0;
-  }
+    &:nth-child(3) {
+        margin-right: 0;
+    }
 `

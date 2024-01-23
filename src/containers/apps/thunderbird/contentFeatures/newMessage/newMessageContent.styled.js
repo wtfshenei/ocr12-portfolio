@@ -18,6 +18,11 @@ export const InputMessage = styled.textarea`
   border: 0.1em solid ${theme.colors.color2};
   resize: vertical;
 `
+export const FormFieldsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`;
 export const FormField = styled.div`
   display: flex;
   flex-direction: row;
@@ -37,6 +42,13 @@ export const FormField = styled.div`
     border: 0.1em solid ${theme.colors.color2};
   }
 `
+export const SubmitContainer = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+`;
 export const FormButton = styled(Button)`
   display: flex;
   align-items: center;
@@ -54,3 +66,16 @@ export const FormButton = styled(Button)`
     fill: ${theme.colors.color10}
   }
 `
+export const Notification = styled.div`
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(1.2em);
+  padding: 1em;
+  border-radius: 5px;
+  color: ${props => props.type === "success" ? "green" : "red"};
+  background-color: ${props => props.type === "success" ? "#d4edda" : "#f8d7da"};
+  border-color: ${props => props.type === "success" ? "#c3e6cb" : "#f5c6cb"};
+  text-align: center;
+  z-index: 10;
+`;
