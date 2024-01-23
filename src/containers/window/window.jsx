@@ -53,7 +53,7 @@ const Window = ({ props, rel, name, content, icon, isFront, initialPosition}) =>
      * Fonction qui sert à minimiser une fenêtre
      */
     const handleMinimize = () => {
-        dispatch(minimizeWindow(rel, isFullScreen))
+        dispatch(minimizeWindow(rel))
     }
 
     /**
