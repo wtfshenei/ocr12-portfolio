@@ -3,7 +3,7 @@ import {GlobalStyle} from "./assets/styles/globalStyle.styles";
 import Router from "./router/router";
 import {StyleSheetManager} from "styled-components";
 
-const shouldForwardProp = (prop) => !['handleAxis', 'isActive', 'active'].includes(prop)
+const shouldForwardProp = (prop) => !['handleAxis', 'isActive', 'active', 'isMobile'].includes(prop)
 
 const App = () => {
     return (
