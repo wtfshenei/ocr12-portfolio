@@ -7,7 +7,7 @@ import Draggable from "react-draggable";
 import Restore from "./assets/restore/restore";
 import {useDispatch, useSelector} from "react-redux";
 import {closeWindow, frontWindow, maximizeWindow, minimizeWindow, positionWindow, restoreWindow} from "../../redux/windows/windowsSlice";
-import {useMobile} from "../../utils/MobileContext";
+import {useMobile} from "../../mobile/utils/MobileContext";
 
 const Window = ({props, rel, name, content, icon, isFront, initialPosition}) => {
     const isMobile = useMobile()

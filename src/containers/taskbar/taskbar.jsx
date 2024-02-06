@@ -1,16 +1,35 @@
-import React from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {AppIconContainer, LogoWindowsSmall, TaskbarStyled, WrapperLeft, WrapperRight} from "./taskbar.styled";
 import SystemClock from "../../components/systemClock/systemClock";
 import {useDispatch, useSelector} from "react-redux";
 import {frontWindow, restoreWindow, minimizeWindow} from '../../redux/windows/windowsSlice'
 import {getIconComponent} from "../../utils/iconSelector";
-import {useMobile} from "../../utils/MobileContext";
+import {useMobile} from "../../mobile/utils/MobileContext";
+import MenuWindows from "../../mobile/components/menuWindows/menuWindows";
 
-const Taskbar = ({ props }) => {
+const Taskbar = ({props}) => {
     const isMobile = useMobile()
     const dispatch = useDispatch()
     const openApps = useSelector((state) => state.windows.window)
     const frontApp = useSelector((state) => state.windows.frontWindow)
+    const [showMenuWindows, setShowMenuWindows] = useState(false)
+    const menuRef = useRef()
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (menuRef.current && !menuRef.current.contains(event.target)) {
+                setShowMenuWindows(false)
+            }
+        }
+
+        if (showMenuWindows) {
+            document.addEventListener('mousedown', handleClickOutside)
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside)
+        }
+    }, [showMenuWindows]);
 
     /**
      * Pour icônes de la barre des tâches.
@@ -32,24 +51,41 @@ const Taskbar = ({ props }) => {
         }
     }
 
+    const toggleMenuWindows = () => {
+        setShowMenuWindows(!showMenuWindows)
+    }
+
     return (
-        <TaskbarStyled>
-            <WrapperLeft isMobile={isMobile}>
-                <LogoWindowsSmall isMobile={isMobile} />
-                {!isMobile && openApps.map(app => (
-                    <AppIconContainer
-                        key={`icon-${app.id}`}
-                        onClick={() => handleIconClick(app.id)}
-                        $isActive={app.id === frontApp}
-                    >
-                        {getIconComponent(app.iconType)}
-                    </AppIconContainer>
-                ))}
-            </WrapperLeft>
-            {!isMobile && <WrapperRight>
-                <SystemClock/>
-            </WrapperRight>}
-        </TaskbarStyled>
+        <>
+            <TaskbarStyled>
+                <WrapperLeft isMobile={isMobile}>
+                    <LogoWindowsSmall isMobile={isMobile} onClick={toggleMenuWindows}/>
+                    {!isMobile && openApps.map(app => (
+                        <AppIconContainer
+                            key={`icon-${app.id}`}
+                            onClick={() => handleIconClick(app.id)}
+                            $isActive={app.id === frontApp}
+                        >
+                            {getIconComponent(app.iconType)}
+                        </AppIconContainer>
+                    ))}
+                </WrapperLeft>
+                {!isMobile && <WrapperRight>
+                    <SystemClock/>
+                </WrapperRight>}
+            </TaskbarStyled>
+            {isMobile && showMenuWindows && (
+                <div>
+                    <MenuWindows
+                        ref={menuRef}
+                        openApps={openApps}
+                        onSelectApp={(appId) => {
+                            handleIconClick(appId)
+                            setShowMenuWindows(false)
+                        }}/>
+                </div>
+            )}
+        </>
     );
 };
 
