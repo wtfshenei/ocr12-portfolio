@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Javascript from "../../../components/utils/icons/javascript/javascript";
 
 export const ContentContainer = styled.div`
     display: flex;
@@ -44,12 +45,17 @@ export const RowItemsTitle = styled.div`
         text-transform: uppercase;
     }
 `
-export const RowItems = styled.div`
+export const RowItems = styled.li`
     display: flex;
     flex-direction: row;
     align-items: center;
     gap: 0.35em;
     height: 1.5em;
+    cursor: pointer;
+    
+    .js-color {
+        fill: yellow;
+    }
     
     svg {
         width: 1em;
@@ -59,5 +65,28 @@ export const RowItems = styled.div`
     p {
         margin: 0;
         padding: 0;
+    }
+`
+export const MenuItemsLeft = styled.ul`
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    list-style-type: none;
+    width: 100%;
+    padding: 0;
+    margin: 0 1em;
+
+    svg {
+        height: 1em;
+        width: 1em;
+        margin-top: 0.5em;
+    }
+    
+    .child2 {
+        margin: 0 1.5em;
+    }
+
+    .child3 {
+        margin: 0 3.5em;
     }
 `
