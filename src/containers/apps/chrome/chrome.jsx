@@ -8,6 +8,10 @@ import Reload from "../../../components/utils/icons/webBrowser/reload";
 import House from "../../../components/utils/icons/webBrowser/house";
 import Javascript from "../../../components/utils/icons/javascript/javascript";
 import ReduxIcon from "../../../components/utils/icons/redux/reduxIcon";
+import Pict1 from './assets/img/pict1.jpg';
+import Pict2 from './assets/img/pict2.jpg';
+import Pict3 from './assets/img/pict3.png';
+import Pict4 from './assets/img/pict4.png';
 
 
 const Chrome = () => {
@@ -15,20 +19,41 @@ const Chrome = () => {
         {
             id: 'home',
             title: 'Home',
-            icon: <House />,
-            content: 'Contenu de la Home'
+            icon: <House/>,
+            content: {
+                name: 'Test 1',
+                desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis porttitor odio. In' +
+                    ' porttitor varius condimentum. Duis non sem dolor. Cras ullamcorper sapien augue, vel elementum neque vestibulum nec. Duis non tortor magna. Vivamus euismod orci et leo vulputate, quis malesuada sapien mollis. Donec rhoncus sapien a velit aliquam laoreet. Vestibulum sodales felis in convallis tempor. Morbi ante augue, convallis id fermentum id, venenatis ac nisl. Nam in nulla leo.',
+                pictures: [`${Pict1}, ${Pict2}, ${Pict3}, ${Pict4}`],
+                technos: '',
+                repoGitHub: 'https://github.com/wtfshenei'
+            }
         },
         {
             id: 'project1',
             title: 'Projet 1',
-            icon: <Javascript />,
-            content: 'Contenu de Projet 1'
+            icon: <Javascript/>,
+            content: {
+                name: 'Test 2',
+                desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis porttitor odio. In' +
+                    ' porttitor varius condimentum. Duis non sem dolor. Cras ullamcorper sapien augue, vel elementum neque vestibulum nec. Duis non tortor magna. Vivamus euismod orci et leo vulputate, quis malesuada sapien mollis. Donec rhoncus sapien a velit aliquam laoreet. Vestibulum sodales felis in convallis tempor. Morbi ante augue, convallis id fermentum id, venenatis ac nisl. Nam in nulla leo.',
+                pictures: [`${Pict1}, ${Pict2}, ${Pict3}, ${Pict4}`],
+                technos: '',
+                repoGitHub: 'https://github.com/wtfshenei'
+            }
         },
         {
             id: 'project2',
             title: 'Projet 2',
-            icon: <ReactIcon />,
-            content: 'Contenu de Projet 2'
+            icon: <ReactIcon/>,
+            content: {
+                name: 'Test 3',
+                desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis porttitor odio. In' +
+                    ' porttitor varius condimentum. Duis non sem dolor. Cras ullamcorper sapien augue, vel elementum neque vestibulum nec. Duis non tortor magna. Vivamus euismod orci et leo vulputate, quis malesuada sapien mollis. Donec rhoncus sapien a velit aliquam laoreet. Vestibulum sodales felis in convallis tempor. Morbi ante augue, convallis id fermentum id, venenatis ac nisl. Nam in nulla leo.',
+                pictures: [`${Pict1}, ${Pict2}, ${Pict3}, ${Pict4}`],
+                technos: '',
+                repoGitHub: 'https://github.com/wtfshenei'
+            }
         }
     ]
 
@@ -67,14 +92,14 @@ const Chrome = () => {
             <HeaderNavigator>
                 <MainBar>
                     <LeftMainBar>
-                        <ButtonNavigator onClick={handleArrowLeftClick} disabled={currentIndex === 0}><ArrowLeft /></ButtonNavigator>
-                        <ButtonNavigator onClick={handleArrowRightClick} disabled={currentIndex === projects.length - 1}><ArrowRight /></ButtonNavigator>
-                        <ButtonNavigator><Reload /></ButtonNavigator>
+                        <ButtonNavigator onClick={handleArrowLeftClick} disabled={currentIndex === 0}><ArrowLeft/></ButtonNavigator>
+                        <ButtonNavigator onClick={handleArrowRightClick} disabled={currentIndex === projects.length - 1}><ArrowRight/></ButtonNavigator>
+                        <ButtonNavigator><Reload/></ButtonNavigator>
                     </LeftMainBar>
                     <Input disabled value={`http://localhost:3000/${currentProject.title}`}></Input>
                     <RightMainBar>
-                        <ReactIcon color={iconReactColor} />
-                        <ReduxIcon color={iconReduxColor} />
+                        <ReactIcon color={iconReactColor}/>
+                        <ReduxIcon color={iconReduxColor}/>
                     </RightMainBar>
                 </MainBar>
                 <BookmarksBar>
@@ -89,7 +114,7 @@ const Chrome = () => {
             <ContentNavigator>
                 {isLoading ? (
                     <LoadingContainer>
-                        <Loading />
+                        <Loading/>
                     </LoadingContainer>
                 ) : (
                     <>
