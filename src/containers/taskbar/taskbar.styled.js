@@ -16,10 +16,10 @@ export const TaskbarStyled = styled.div`
 `
 
 export const WrapperLeft = styled.div`
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  width: 70%;
+    display: flex;
+    justify-content: ${({ isMobile }) => isMobile ? 'center' : 'flex-start'};
+    align-items: center;
+    width: ${({ isMobile }) => isMobile ? '100%' : '70%'};
 `
 
 export const WrapperRight = styled.div`
@@ -30,11 +30,11 @@ export const WrapperRight = styled.div`
 `
 
 export const LogoWindowsSmall = styled(LogoWindows)`
-  width: 2em;
-  height: 2em;
-  cursor: pointer;
-  fill: ${theme.colors.color3};
-  margin-right: 0.66em;
+    width: 2em;
+    height: 2em;
+    cursor: pointer;
+    fill: ${theme.colors.color3};
+    margin-right: ${({ isMobile }) => isMobile ? '0' : '0.66em'};
 `
 
 export const AppIconContainer = styled.div`

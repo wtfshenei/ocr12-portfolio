@@ -4,8 +4,10 @@ import SystemClock from "../../components/systemClock/systemClock";
 import {useDispatch, useSelector} from "react-redux";
 import {frontWindow, restoreWindow, minimizeWindow} from '../../redux/windows/windowsSlice'
 import {getIconComponent} from "../../utils/iconSelector";
+import {useMobile} from "../../utils/MobileContext";
 
 const Taskbar = ({ props }) => {
+    const isMobile = useMobile()
     const dispatch = useDispatch()
     const openApps = useSelector((state) => state.windows.window)
     const frontApp = useSelector((state) => state.windows.frontWindow)
@@ -31,22 +33,22 @@ const Taskbar = ({ props }) => {
     }
 
     return (
-        <TaskbarStyled {...props}>
-            <WrapperLeft>
-                <LogoWindowsSmall />
-                {openApps.map(app => (
+        <TaskbarStyled>
+            <WrapperLeft isMobile={isMobile}>
+                <LogoWindowsSmall isMobile={isMobile} />
+                {!isMobile && openApps.map(app => (
                     <AppIconContainer
                         key={`icon-${app.id}`}
-                        onClick={() => handleIconClick(app.id, app.isMinimized)}
+                        onClick={() => handleIconClick(app.id)}
                         $isActive={app.id === frontApp}
                     >
                         {getIconComponent(app.iconType)}
                     </AppIconContainer>
                 ))}
             </WrapperLeft>
-            <WrapperRight>
-                <SystemClock />
-            </WrapperRight>
+            {!isMobile && <WrapperRight>
+                <SystemClock/>
+            </WrapperRight>}
         </TaskbarStyled>
     );
 };
