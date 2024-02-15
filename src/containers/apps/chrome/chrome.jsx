@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {BookmarkButton, BookmarksBar, ButtonNavigator, ContentContainer, ContentNavigator, HeaderNavigator, LeftMainBar, Loading, LoadingContainer, MainBar, RightMainBar} from "./chrome.styled";
+import {BookmarkButton, BookmarksBar, ButtonNavigator, CarouselProjects, ContentContainer, ContentNavigator, HeaderNavigator, LeftMainBar, Loading, LoadingContainer, MainBar, RightMainBar} from "./chrome.styled";
 import Input from "../../../components/input/input";
 import ReactIcon from "../../../components/utils/icons/react/reactIcon";
 import ArrowLeft from "../../../components/utils/icons/webBrowser/arrowLeft";
@@ -21,12 +21,12 @@ const Chrome = () => {
             title: 'Home',
             icon: <House/>,
             content: {
-                name: 'Test 1',
+                name: 'Portfolio',
                 desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis porttitor odio. In' +
                     ' porttitor varius condimentum. Duis non sem dolor. Cras ullamcorper sapien augue, vel elementum neque vestibulum nec. Duis non tortor magna. Vivamus euismod orci et leo vulputate, quis malesuada sapien mollis. Donec rhoncus sapien a velit aliquam laoreet. Vestibulum sodales felis in convallis tempor. Morbi ante augue, convallis id fermentum id, venenatis ac nisl. Nam in nulla leo.',
-                pictures: [`${Pict1}, ${Pict2}, ${Pict3}, ${Pict4}`],
-                technos: '',
-                repoGitHub: 'https://github.com/wtfshenei'
+                pictures: [Pict1, Pict2, Pict3, Pict4],
+                technos: ['React', 'Redux', 'Styled-Components', 'React-Draggable'],
+                repoGitHub: 'https://github.com/wtfshenei/ocr12-portfolio'
             }
         },
         {
@@ -34,12 +34,12 @@ const Chrome = () => {
             title: 'Projet 1',
             icon: <Javascript/>,
             content: {
-                name: 'Test 2',
+                name: 'Modale d\'administration en JS',
                 desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis porttitor odio. In' +
                     ' porttitor varius condimentum. Duis non sem dolor. Cras ullamcorper sapien augue, vel elementum neque vestibulum nec. Duis non tortor magna. Vivamus euismod orci et leo vulputate, quis malesuada sapien mollis. Donec rhoncus sapien a velit aliquam laoreet. Vestibulum sodales felis in convallis tempor. Morbi ante augue, convallis id fermentum id, venenatis ac nisl. Nam in nulla leo.',
-                pictures: [`${Pict1}, ${Pict2}, ${Pict3}, ${Pict4}`],
-                technos: '',
-                repoGitHub: 'https://github.com/wtfshenei'
+                pictures: [Pict1, Pict2, Pict3, Pict4],
+                technos: ['HTML', 'CSS', 'Javascript'],
+                repoGitHub: 'https://github.com/wtfshenei/ocr6sophiebluel'
             }
         },
         {
@@ -47,12 +47,12 @@ const Chrome = () => {
             title: 'Projet 2',
             icon: <ReactIcon/>,
             content: {
-                name: 'Test 3',
+                name: 'Interface d\'une agence bancaire',
                 desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis porttitor odio. In' +
                     ' porttitor varius condimentum. Duis non sem dolor. Cras ullamcorper sapien augue, vel elementum neque vestibulum nec. Duis non tortor magna. Vivamus euismod orci et leo vulputate, quis malesuada sapien mollis. Donec rhoncus sapien a velit aliquam laoreet. Vestibulum sodales felis in convallis tempor. Morbi ante augue, convallis id fermentum id, venenatis ac nisl. Nam in nulla leo.',
-                pictures: [`${Pict1}, ${Pict2}, ${Pict3}, ${Pict4}`],
-                technos: '',
-                repoGitHub: 'https://github.com/wtfshenei'
+                pictures: [Pict1, Pict2, Pict3, Pict4],
+                technos: ['React', 'Redux', 'SASS'],
+                repoGitHub: 'https://github.com/wtfshenei/ocrp11-ArgentBank-website'
             }
         }
     ]
@@ -118,8 +118,22 @@ const Chrome = () => {
                     </LoadingContainer>
                 ) : (
                     <>
-                        <h2>{currentProject.title}</h2>
-                        <p>{currentProject.content}</p>
+                        <h2>{currentProject.content.name}</h2>
+                        <CarouselProjects pictures={currentProject.content.pictures} />
+                        <h3>Description</h3>
+                        <p>{currentProject.content.desc}</p>
+                        <h3>Technos</h3>
+                        {currentProject.content.technos && currentProject.content.technos.length > 0 ? (
+                            <ul>
+                                {currentProject.content.technos.map((techno, index) => (
+                                    <li key={index}>{techno}</li>
+                                ))}
+                            </ul>
+                        ) : (
+                            <p>Aucune technologie spécifiée.</p>
+                        )}
+                        <h3>Repo GitHub</h3>
+                        <p><a href={currentProject.content.repoGitHub} target="_blank" rel="noreferrer">{currentProject.content.repoGitHub}</a></p>
                     </>
                 )}
             </ContentNavigator>

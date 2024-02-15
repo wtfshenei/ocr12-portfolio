@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Javascript from "../../../components/utils/icons/javascript/javascript";
 
 export const ContentContainer = styled.div`
     display: flex;
@@ -10,13 +9,13 @@ export const ContentContainer = styled.div`
     padding: 0;
 `
 export const ContentLeftWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 250px;  
-  width: 25%;
-  height: 100%;
-  background-color: bisque;
-  padding: 0.25em;  
+    display: flex;
+    flex-direction: column;
+    max-width: ${({isMobile}) => isMobile ? 'none' : '250px'};
+    width: ${({isMobile}) => isMobile ? '100%' : '25%'};
+    height: 100%;
+    background-color: bisque;
+    padding: 0.25em;
 `
 export const ContentRightWrapper = styled.div`
     display: flex;

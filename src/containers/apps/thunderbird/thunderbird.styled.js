@@ -11,11 +11,11 @@ export const ContentContainer = styled.div`
   padding: 0;
 `
 export const ContentLeftWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  max-width: 250px;  
-  width: 25%;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    max-width: ${({isMobile}) => isMobile ? 'none' : '250px'};
+    width: ${({isMobile}) => isMobile ? '100%' : '25%'};
+    height: 100%;
 `
 export const ContentLeftBar = styled.div`
   display: flex;
@@ -105,4 +105,17 @@ export const VerticalBar = styled.span`
   border: 0.1em solid ${theme.colors.color2};
   width: 0.1em;
   height: 100%;
+`
+export const FloatingMessageButton = styled.button`
+    position: fixed;
+    bottom: 3%;
+    right: 5%;
+    z-index: 10;
+    padding: 10px 20px;
+    border-radius: 50px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
 `

@@ -1,6 +1,7 @@
 import styled, {keyframes} from "styled-components";
 import Button from "../../../components/button/button";
 import {theme} from "../../../assets/styles/theme.styles";
+import Carousel from "../../../components/carousel/carousel";
 
 export const ContentContainer = styled.div`
   display: flex;
@@ -89,6 +90,63 @@ export const ContentNavigator = styled.div`
   flex-direction: column;
   align-items: center;
   height: 100%;
+  padding: 0 0.5em;
+  position: relative;
+  max-width: 100vw;
+  gap: 15px;
+
+  ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  ul li {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  ul li::before {
+    content: '★';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: ${theme.colors.color1};
+    font-size: 16px;
+  }
+  
+  h2 {
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  h3 {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    width: 100%;
+    background-color: ${theme.colors.color6};
+  }
+  
+  p {
+    padding: 0;
+    margin: 0;
+  }
+  
+  a {
+    padding-bottom: 10px;
+    
+    &:visited, &:link {
+      color: blue;
+      text-decoration: underline;
+    }
+  }
 `
 const spin = keyframes`
   0% {
@@ -169,3 +227,38 @@ export const BookmarkButton = styled(Button)`
     fill: ${theme.colors.color3};
   }
 `
+export const CarouselProjects = styled(Carousel)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 10;
+    height: 100%;
+
+    svg {
+      height: 50px;
+      width: 50px;
+    }
+  }
+
+  .left {
+    left: 0;
+  }
+
+  .right {
+    right: 0;
+  }
+`;
