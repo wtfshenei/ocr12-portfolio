@@ -24,23 +24,35 @@ export const FormFieldsContainer = styled.div`
   width: 100%;
 `;
 export const FormField = styled.div`
-  display: flex;
-  flex-direction: row;
-  margin-bottom: 1em;
-  width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1em;
+    width: 100%;
 
-  label {
-    width: 10%
-  }
+    label {
+        width: 10%;
 
-  input {
-    margin-left: 1em;
-    height: 2em;
-    width: 90%;
-    padding: 1em;
-    border-radius: 5px;
-    border: 0.1em solid ${theme.colors.color2};
-  }
+        @media (max-width: 533px) {
+            width: 15%;
+        }
+
+        @media (max-width: 391px) {
+            width: 20%;
+        }
+
+        @media (max-width: 328px) {
+            width: 25%;
+        }
+    }
+
+    input {
+        margin-left: 1em;
+        height: 2em;
+        width: 90%;
+        padding: 1em;
+        border-radius: 5px;
+        border: 0.1em solid ${theme.colors.color2};
+    }
 `
 export const SubmitContainer = styled.div`
   position: relative;
