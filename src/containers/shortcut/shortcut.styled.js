@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import {theme} from "../../assets/styles/theme.styles";
 
-export const ShortcutWrapper = styled.div`
+export const ShortcutWrapper = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11,6 +11,8 @@ export const ShortcutWrapper = styled.div`
   cursor: pointer;
   padding: 0.66em;
   transition: background 0.3s, box-shadow 0.3s;
+  background: none;
+  border: none;  
   
   svg {
     height: 3.2em;
