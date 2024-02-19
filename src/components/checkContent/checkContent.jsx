@@ -10,16 +10,24 @@ const CheckContent = ({children}) => {
     const buttonRef = useRef(null)
 
     useEffect(() => {
-        function handleClickOutside(event) {
+        const handleClickOutside = (event) => {
             if (menuRef.current && !menuRef.current.contains(event.target) && !buttonRef.current.contains(event.target)) {
                 setMenuOpen(false);
             }
         }
 
-        document.addEventListener("mousedown", handleClickOutside);
+        const handleItemMenuClick = (event) => {
+            if (event.target.closest('.item-menu')) {
+                setMenuOpen(false)
+            }
+        }
+
+        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('click', handleItemMenuClick)
 
         return () => {
-            document.removeEventListener("mousedown", handleClickOutside);
+            document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('click', handleItemMenuClick)
         };
     }, [menuOpen]);
 

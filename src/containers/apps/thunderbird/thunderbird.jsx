@@ -121,21 +121,22 @@ const Thunderbird = () => {
                             <MailVisitor>visiteur@portfolio-LP</MailVisitor>
                         </MenuTitleLeft>
                         <MenuItemsLeft>
-                            <li onClick={() => handleSetActiveFeature('InboxContent', 'Boîte de réception')}>
+                            <li className={'item-menu'} onClick={() => handleSetActiveFeature('InboxContent', 'Boîte' +
+                                ' de réception')}>
                                 <MailingServiceButton active={activeFeature === 'InboxContent'}>
                                     <AngleRight/>
                                     <Inbox color={theme.colors.color1}/>
                                     <MailingServiceSpan>Boîte de réception (1)</MailingServiceSpan>
                                 </MailingServiceButton>
                             </li>
-                            <li onClick={() => handleSetActiveFeature('DraftContent', 'Brouillons')}>
+                            <li className={'item-menu'} onClick={() => handleSetActiveFeature('DraftContent', 'Brouillons')}>
                                 <MailingServiceButton active={activeFeature === 'DraftContent'}>
                                     <AngleRight/>
                                     <Note color={theme.colors.color11}/>
                                     <MailingServiceSpan>Brouillons ({useSelector(state => state.mails.drafts).length})</MailingServiceSpan>
                                 </MailingServiceButton>
                             </li>
-                            <li onClick={() => handleSetActiveFeature('SentMessagesContent', 'Messages Envoyés')}>
+                            <li className={'item-menu'} onClick={() => handleSetActiveFeature('SentMessagesContent', 'Messages Envoyés')}>
                                 <MailingServiceButton active={activeFeature === 'SentMessagesContent'}>
                                     <AngleRight/>
                                     <Paperplane color={theme.colors.color10}/>

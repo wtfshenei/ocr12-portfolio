@@ -30,19 +30,19 @@ const Vscode = () => {
                             <Folder/>
                             <p>components</p>
                         </RowItems>
-                        <RowItems className={'child3'}>
+                        <RowItems className={'child3 item-menu'}>
                             <ReactIcon/>
                             <p>aboutMe.jsx</p>
                         </RowItems>
-                        <RowItems className={'child3'}>
+                        <RowItems className={'child3 item-menu'}>
                             <ReactIcon/>
                             <p>studies.jsx</p>
                         </RowItems>
-                        <RowItems className={'child3'}>
+                        <RowItems className={'child3 item-menu'}>
                             <ReactIcon/>
                             <p>career.jsx</p>
                         </RowItems>
-                        <RowItems className={'child3'}>
+                        <RowItems className={'child3 item-menu'}>
                             <Javascript fill={'yellow'}/>
                             <p>picture.styled.js</p>
                         </RowItems>

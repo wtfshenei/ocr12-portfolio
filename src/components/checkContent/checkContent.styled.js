@@ -35,7 +35,7 @@ export const MenuDisplay = styled.div`
     left: 0;
     top: calc(0 + 2em);
     max-width: 340px;
-    height: 50%;
+    height: 30%;
     background-color: grey;
     z-index: 100;
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
