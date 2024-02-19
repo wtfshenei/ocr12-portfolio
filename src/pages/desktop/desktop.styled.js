@@ -5,7 +5,7 @@ export const DesktopContainer = styled.div`
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: calc(100vh - 2.9em);
+  height: calc(100dvh - 2.9em);
   overflow: hidden;
 `
 

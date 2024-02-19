@@ -25,7 +25,7 @@ export const WrapperCenter = styled.div`
   align-items: center;
   justify-content: center;
   width: 100vw;
-  height: 100vh;
+  height: 100dvh;
 `;
 
 export const StyledLogoWindows = styled(LogoWindows)`
