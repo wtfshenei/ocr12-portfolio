@@ -14,10 +14,11 @@ const Taskbar = ({props}) => {
     const frontApp = useSelector((state) => state.windows.frontWindow)
     const [showMenuWindows, setShowMenuWindows] = useState(false)
     const menuRef = useRef()
+    const buttonRef = useRef()
 
     useEffect(() => {
         const handleClickOutside = (event) => {
-            if (menuRef.current && !menuRef.current.contains(event.target)) {
+            if ((menuRef.current && !menuRef.current.contains(event.target)) && (buttonRef.current && !buttonRef.current.contains(event.target))) {
                 setShowMenuWindows(false)
             }
         }
@@ -59,7 +60,7 @@ const Taskbar = ({props}) => {
         <>
             <TaskbarStyled>
                 <WrapperLeft isMobile={isMobile}>
-                    <LogoWindowsSmall isMobile={isMobile} onClick={toggleMenuWindows}/>
+                    <LogoWindowsSmall isMobile={isMobile} ref={buttonRef} onClick={toggleMenuWindows}/>
                     {!isMobile && openApps.map(app => (
                         <AppIconContainer
                             key={`icon-${app.id}`}

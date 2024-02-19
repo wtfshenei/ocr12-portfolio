@@ -3,7 +3,6 @@ import {AppIcon, AppName, NoAppsMessage, OpenAppsModal} from "./menuWindows.styl
 import {getIconComponent} from "../../../utils/iconSelector";
 
 const MenuWindows = forwardRef(({ openApps, onSelectApp }, ref) => {
-    // Vérifie si la liste des applications ouvertes est vide
     const hasApps = openApps.length > 0;
 
     return (

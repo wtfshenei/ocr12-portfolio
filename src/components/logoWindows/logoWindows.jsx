@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {forwardRef} from 'react';
 
-const LogoWindows = (props) => {
+const LogoWindows = forwardRef((props, ref) => {
     return (
-        <div {...props}>
+        <div ref={ref} {...props}>
             <svg
                 viewBox="0 0 256 257"
                 xmlns="http://www.w3.org/2000/svg"
@@ -11,6 +11,6 @@ const LogoWindows = (props) => {
             </svg>
         </div>
     );
-};
+});
 
 export default LogoWindows;

@@ -2,32 +2,32 @@ import styled from "styled-components";
 
 export const OpenAppsModal = styled.div`
     position: fixed;
-    bottom: 3em; // Positionner juste au-dessus du Taskbar
-    left: 20%; // Centrer la modale
+    bottom: 3em;
+    left: 20%;
     width: 60vw;
     height: 10vh;
-    background-color: rgba(255, 255, 255, 0.3); // Assurez-vous que le fond est partiellement transparent pour voir l'effet de flou
+    background-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     display: flex;
     justify-content: space-around;
     align-items: center;
     padding: 10px;
     border-radius: 5px;
-    z-index: 3000; // S'assurer qu'elle soit au-dessus de tout autre contenu
+    z-index: 3000;
 
     @media (max-width: 425px) {
-        width: 90%; // Prendre toute la largeur de l'écran
+        width: 90%;
         left: 5%;
     }
     
     @media (max-width: 375px) {
-        width: 95%; // Prendre toute la largeur de l'écran
+        width: 95%;
         left: 2.5%;
     }
     
     @media (max-width: 320px) {
-        width: 100%; // Prendre toute la largeur de l'écran
-        left: 0; // Aligner à gauche pour remplir tout l'écran
+        width: 100%;
+        left: 0;
     }
 `;
 
@@ -50,7 +50,7 @@ export const AppName = styled.span`
 `;
 
 export const NoAppsMessage = styled.div`
-    color: #666; // Choisissez une couleur appropriée
+    color: #666;
     text-align: center;
     width: 100%;
 `;
