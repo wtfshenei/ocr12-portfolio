@@ -11,6 +11,7 @@ const Router = () => {
                 <Route path={"/"} element={<Loader />} />
                 <Route path={"/login"} element={<Login />} />
                 <Route path={"/desktop"} element={<Desktop />} />
+                <Route path={"/*"} element={<Desktop />} />
             </Routes>
         </BrowserRouter>
     );
