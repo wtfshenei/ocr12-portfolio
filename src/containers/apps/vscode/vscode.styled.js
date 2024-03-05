@@ -17,6 +17,7 @@ export const ContentLeftWrapper = styled.div`
     height: 100%;
     padding: 0.25em;
     border-right: solid 0.1em ${theme.colors.color6};
+    overflow: hidden;
 `
 export const ContentRightWrapper = styled.div`
     display: flex;
