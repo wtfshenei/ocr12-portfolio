@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Taskbar from "../../containers/taskbar/taskbar";
+import logoBackground from "./logoLP.png"
 
 export const DesktopContainer = styled.div`
   display: flex;
@@ -7,6 +8,10 @@ export const DesktopContainer = styled.div`
   width: 100%;
   height: calc(100dvh - 2.9em);
   overflow: hidden;
+  background-image: url(${logoBackground});
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;  
 `
 
 export const TaskbarDisplay = styled(Taskbar)`

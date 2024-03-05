@@ -16,12 +16,6 @@ const Desktop = () => {
             contentType: 'thunderbird'
         },
         {
-            id: 'app2',
-            name: 'C.V.',
-            iconType: 'acrobatreader',
-            contentType: 'acrobatreader'
-        },
-        {
             id: 'app3',
             name: 'Projets',
             iconType: 'chrome',
