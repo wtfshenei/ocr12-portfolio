@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import MenuIcon from "../utils/icons/menu/menuIcon";
-import {MenuButtonOff, MenuDisplay} from "./checkContent.styled";
+import {MenuButton, MenuButtonWrapper, MenuDisplay} from "./checkContent.styled";
 import {useMobile} from "../../mobile/utils/MobileContext";
 
 const CheckContent = ({children}) => {
@@ -38,9 +38,11 @@ const CheckContent = ({children}) => {
     if (isMobile) {
         return (
             <>
-                <MenuButtonOff ref={buttonRef} onClick={toggleMenu}>
-                    <MenuIcon/>
-                </MenuButtonOff>
+                <MenuButtonWrapper>
+                    <MenuButton ref={buttonRef} onClick={toggleMenu}>
+                        <MenuIcon/>
+                    </MenuButton>
+                </MenuButtonWrapper>
                 {menuOpen && (
                     <MenuDisplay ref={menuRef}>
                         {children}
