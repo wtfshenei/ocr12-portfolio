@@ -233,11 +233,6 @@ export const CarouselProjects = styled(Carousel)`
   align-items: center;
   position: relative;
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
-
   .carousel-button {
     position: absolute;
     top: 50%;
@@ -251,6 +246,7 @@ export const CarouselProjects = styled(Carousel)`
     svg {
       height: 50px;
       width: 50px;
+      fill: grey;
     }
   }
 
@@ -261,4 +257,35 @@ export const CarouselProjects = styled(Carousel)`
   .right {
     right: 0;
   }
+  
+  .img-container {
+    position: relative;
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.15));
+    }
+    
+    .img-txt {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+      color: white;
+      padding: 5px;
+      background-color: rgba(0, 0, 0, 0.8);
+      border-radius: 5px;
+    }
+  }
+  
+  
 `;
