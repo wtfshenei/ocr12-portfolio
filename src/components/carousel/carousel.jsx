@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import AngleLeft from "../utils/icons/angles/angleLeft";
 import AngleRight from "../utils/icons/angles/angleRight";
 
-const Carousel = ({ pictures, className }) => {
+const Carousel = ({pictures, className}) => {
     const [currentIndex, setCurrentIndex] = useState(0)
 
     const goToPrevious = () => {
@@ -19,11 +19,14 @@ const Carousel = ({ pictures, className }) => {
 
     return (
         <div className={className}>
-            <button className={'carousel-button left'} onClick={goToPrevious}><AngleLeft /></button>
+            <button className={'carousel-button left'} onClick={goToPrevious}><AngleLeft/></button>
             {pictures && pictures.length > 0 && (
-                <img src={pictures[currentIndex]} alt={`Slide ${currentIndex + 1}`}/>
+                <div className={'img-container'}>
+                    <img src={pictures[currentIndex].src} alt={`Slide ${currentIndex + 1}`}/>
+                    <div className={'img-txt'}>{pictures[currentIndex].txt}</div>
+                </div>
             )}
-            <button className={'carousel-button right'} onClick={goToNext}><AngleRight /></button>
+            <button className={'carousel-button right'} onClick={goToNext}><AngleRight/></button>
         </div>
     );
 };
