@@ -16,6 +16,7 @@ export const ContentLeftWrapper = styled.div`
     width: ${({isMobile}) => isMobile ? '100%' : '25%'};
     height: 100%;
     padding: 0.25em;
+    border-right: solid 0.1em ${theme.colors.color6};
 `
 export const ContentRightWrapper = styled.div`
     display: flex;
