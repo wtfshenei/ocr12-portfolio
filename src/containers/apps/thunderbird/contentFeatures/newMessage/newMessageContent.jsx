@@ -105,7 +105,7 @@ const NewMessageContent = ({onDraftSend}) => {
                 <FormFieldsContainer>
                     <FormField>
                         <label id={'to'}>A :</label>
-                        <Input id={'to'} disabled value={'Ludovic Parriaud <wtfshenei@gmail.com>'}/>
+                        <Input id={'to'} disabled value={'Ludovic Parriaud <ludovic.parriaud@gmail.com>'}/>
                     </FormField>
                     <FormField>
                         <label id={'from'}>De :</label>
