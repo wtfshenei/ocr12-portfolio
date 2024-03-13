@@ -260,10 +260,12 @@ export const CarouselProjects = styled(Carousel)`
   
   .img-container {
     position: relative;
+    height: 700px;
 
     img {
       max-width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: contain;
     }
     
     &::after {
