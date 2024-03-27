@@ -6,6 +6,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {frontWindow, openWindow} from "../../redux/windows/windowsSlice";
 import {getIconComponent} from "../../utils/iconSelector";
 import {getContentComponent} from "../../utils/contentSelector";
+import {ComponentSeo} from "../loader/loader.styled";
 
 const Desktop = () => {
     const data = [
@@ -69,6 +70,7 @@ const Desktop = () => {
 
     return (
         <DesktopContainer>
+            <ComponentSeo>Ludovic Parriaud - Développeur Front-End - Portfolio</ComponentSeo>
             <ShortcutsWrapper>
                 {data.map(app => (
                     <Shortcut

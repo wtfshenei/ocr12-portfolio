@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import {StyledLogoWindows, WrapperCenter} from "./loader.styled";
+import {ComponentSeo, StyledLogoWindows, WrapperCenter} from "./loader.styled";
 import {useNavigate} from "react-router-dom";
 
 const Loader = () => {
@@ -14,6 +14,7 @@ const Loader = () => {
 
     return (
       <WrapperCenter>
+          <ComponentSeo>Ludovic Parriaud - Développeur Front-End - Portfolio</ComponentSeo>
           <StyledLogoWindows></StyledLogoWindows>
       </WrapperCenter>
     )

@@ -8,6 +8,7 @@ import {
     WrapperColumn
 } from "./login.styled";
 import {useNavigate} from "react-router-dom";
+import {ComponentSeo} from "../loader/loader.styled";
 
 const Login = () => {
     const navigate = useNavigate()
@@ -22,6 +23,7 @@ const Login = () => {
     return (
         <WrapperCenterTop>
             <WrapperColumn>
+                <ComponentSeo>Ludovic Parriaud - Développeur Front-End - Portfolio</ComponentSeo>
                 <LoginUserIcon />
                 <UserName>Invité</UserName>
                 <InputButtonContainer>

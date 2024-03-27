@@ -34,3 +34,16 @@ export const StyledLogoWindows = styled(LogoWindows)`
   animation: ${WaveAnim} 2s ease-in-out infinite;
   fill: ${theme.colors.color3};
 `;
+
+export const ComponentSeo = styled.h1`
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 0;
+    clip: auto;
+    clip-path: inset(50%);
+`
