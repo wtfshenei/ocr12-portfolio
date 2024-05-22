@@ -79,14 +79,14 @@ const Vscode = () => {
                 </LinksContainer>
                 <TxtsContainer>
                     <p id={'aboutme'}>
-                        <span>Bonjour.</span> Je m'appelle Ludovic Parriaud et j'ai 36 ans. Je vis en Bourgogne et j'ai choisi de me reconvertir comme développeur web après avoir passé plus de 18 ans en tant qu'agent de maintenance ferroviaire à la SNCF. J'ai toujours
+                        <span>Bonjour.</span> Je m'appelle Ludovic Parriaud et j'ai 37 ans. Je vis en Bourgogne et j'ai choisi de me reconvertir comme développeur web après avoir passé plus de 18 ans en tant qu'agent de maintenance ferroviaire à la SNCF. J'ai toujours
                         eu un attrait et une fascination pour le développement, partir de rien et voir un projet prendre vie sous ses yeux est un sentiment incroyable.
                     </p>
                     <p id={'studies'}>
                         <span>Etudes.</span> Apprenti en alternance de 2003 à 2005, j'ai obtenu mon BEP MSMA (Maintenance des Systèmes Mécaniques Automatisés) qui m'a ensuite permi de me faire embaucher au Technicentre de Nevers, l'établissement où j'étais affilié.
                     </p>
                     <p>
-                        <span>Formation.</span> J'ai débuté ma formation de reconversion en novembre 2022 jusqu'en avril 2024.
+                        <span>Formation.</span> J'ai débuté ma formation de reconversion en novembre 2022 jusqu'en avril 2024. J'ai officiellement obtenu mon diplôme de développeur intégrateur web en mai.
                     </p>
                     <p id={'career'}>
                         <span>Parcours professionnel.</span> Pour le moment mon parcours professionnel se résume à mon expérience au sein de la SNCF. J'ai pu y exercer plusieurs corps de métiers dans lesquels j'ai appris à travailler aussi bien en collaboration
