@@ -12,7 +12,7 @@ import Github from "./assets/social/github/github";
 import Linkedin from "./assets/social/linkedin/linkedin";
 import Mail from "./assets/social/mail/mail";
 import Cv from "./assets/social/cv/cv";
-import CvDl from "./assets/social/cv/CV_Ludovic_Parriaud.pdf"
+import CvDl from "./assets/social/cv/CV_Parriaud_Ludovic.pdf"
 
 const Vscode = () => {
     const isMobile = useMobile()
